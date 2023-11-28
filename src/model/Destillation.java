@@ -6,5 +6,9 @@ public class Destillation {
     private LocalDate startDato;
     private LocalDate slutDato;
 
+    public Destillation() {
+
+    }
+
 
 }
