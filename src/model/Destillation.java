@@ -21,4 +21,60 @@ public class Destillation {
         this.alkoholProcent = alkoholProcent;
         this.medarbejder = medarbejder;
     }
+
+    public LocalDate getStartDato() {
+        return startDato;
+    }
+
+    public void setStartDato(LocalDate startDato) {
+        this.startDato = startDato;
+    }
+
+    public LocalDate getSlutDato() {
+        return slutDato;
+    }
+
+    public void setSlutDato(LocalDate slutDato) {
+        this.slutDato = slutDato;
+    }
+
+    public String getMaltBatch() {
+        return maltBatch;
+    }
+
+    public void setMaltBatch(String maltBatch) {
+        this.maltBatch = maltBatch;
+    }
+
+    public String getKornSort() {
+        return kornSort;
+    }
+
+    public void setKornSort(String kornSort) {
+        this.kornSort = kornSort;
+    }
+
+    public double getVaeskeILiter() {
+        return vaeskeILiter;
+    }
+
+    public void setVaeskeILiter(double vaeskeILiter) {
+        this.vaeskeILiter = vaeskeILiter;
+    }
+
+    public double getAlkoholProcent() {
+        return alkoholProcent;
+    }
+
+    public void setAlkoholProcent(double alkoholProcent) {
+        this.alkoholProcent = alkoholProcent;
+    }
+
+    public Medarbejder getMedarbejder() {
+        return medarbejder;
+    }
+
+    public void setMedarbejder(Medarbejder medarbejder) {
+        this.medarbejder = medarbejder;
+    }
 }
