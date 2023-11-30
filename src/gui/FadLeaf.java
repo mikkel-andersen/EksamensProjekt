@@ -13,6 +13,10 @@ public class FadLeaf implements GUIComponent {
 
     @Override
     public void displayInfo() {
+    }
+    @Override
+    public String toString() {
 
+        return "FadID: " + fad.getId() + " - " + fad.getOprindelsesLand() + "Kapacitet: " + fad.getKapacitetILiter() + "Lager: " + fad.getLager();
     }
 }
