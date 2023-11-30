@@ -40,4 +40,44 @@ public class Lager {
     public void removeFad(Fad fad) {
         fadliste.remove(fad);
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getKapacitet() {
+        return kapacitet;
+    }
+
+    public void setKapacitet(int kapacitet) {
+        this.kapacitet = kapacitet;
+    }
+
+    public int getAntalFad() {
+        return antalFad;
+    }
+
+    public void setAntalFad(int antalFad) {
+        this.antalFad = antalFad;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
+    public List<Fad> getFadliste() {
+        return fadliste;
+    }
+
+    public void setFadliste(List<Fad> fadliste) {
+        this.fadliste = fadliste;
+    }
 }

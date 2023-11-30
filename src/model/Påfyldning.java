@@ -31,4 +31,16 @@ public class Påfyldning {
         return "Påfyldning af " + getLiter()
                 + " liter d. " + getPaafyldningsDato();
     }
+
+    public void setPaafyldningsDato(LocalDate paafyldningsDato) {
+        this.paafyldningsDato = paafyldningsDato;
+    }
+
+    public void setDestillation(Destillation destillation) {
+        this.destillation = destillation;
+    }
+
+    public void setLiter(int liter) {
+        this.liter = liter;
+    }
 }

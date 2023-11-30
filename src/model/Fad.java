@@ -69,7 +69,43 @@ public class Fad {
         }
     }
 
+    public Lager getLager() {
+        return lager;
+    }
 
+    public String getOprindelsesLand() {
+        return oprindelsesLand;
+    }
 
+    public void setOprindelsesLand(String oprindelsesLand) {
+        this.oprindelsesLand = oprindelsesLand;
+    }
 
+    public void setHistorik(ArrayList<String> historik) {
+        this.historik = historik;
+    }
+
+    public void setDestillater(ArrayList<Destillation> destillater) {
+        this.destillater = destillater;
+    }
+
+    public void setPåfyldninger(List<Påfyldning> påfyldninger) {
+        this.påfyldninger = påfyldninger;
+    }
+
+    public void setKapacitetILiter(int kapacitetILiter) {
+        this.kapacitetILiter = kapacitetILiter;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getAntalLiterPaafyldt() {
+        return antalLiterPaafyldt;
+    }
+
+    public void setAntalLiterPaafyldt(double antalLiterPaafyldt) {
+        this.antalLiterPaafyldt = antalLiterPaafyldt;
+    }
 }
