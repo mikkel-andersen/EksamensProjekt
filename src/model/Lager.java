@@ -24,6 +24,9 @@ public class Lager {
      */
 
     public void addFad(Fad fad) {
+        if(antalFad > kapacitet){
+            throw new IllegalArgumentException("Lageret kan ikke holde flere tønder");
+        }
         for(Fad nuværendeFad : fadliste){
             if(nuværendeFad.equals(fad)){
                 throw new IllegalArgumentException("Tønden er allerede tilstede på dette lager");
