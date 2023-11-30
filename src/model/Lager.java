@@ -22,7 +22,13 @@ public class Lager {
      */
 
     public void addFad(Fad fad) {
+        for(Fad nuværendeFad : fadliste){
+            if(nuværendeFad.equals(fad)){
+                throw new IllegalArgumentException("Tønden er allerede tilstede på dette lager");
+            }
+        }
         fadliste.add(fad);
+        fad.setLager(this);
     }
 
     public void removeFad(Fad fad) {

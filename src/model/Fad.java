@@ -20,5 +20,7 @@ public class Fad {
         this.destillater = new ArrayList<>();
     }
 
-
+    public void setLager(Lager lager) {
+        this.lager = lager;
+    }
 }

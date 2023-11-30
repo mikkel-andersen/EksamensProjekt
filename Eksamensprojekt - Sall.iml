@@ -8,8 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="javafx-swt" level="application" />
-    <orderEntry type="library" exported="" name="Mockito" level="application" />
+    <orderEntry type="library" name="javafx-swt" level="application" />
+    <orderEntry type="library" name="Mockito" level="application" />
     <orderEntry type="module-library" exported="" scope="TEST">
       <library name="JUnit5.8.1">
         <CLASSES>
@@ -26,5 +26,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="javafx" level="application" />
+    <orderEntry type="library" exported="" name="javafx.base" level="application" />
   </component>
 </module>
