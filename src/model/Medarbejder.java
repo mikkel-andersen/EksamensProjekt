@@ -27,4 +27,8 @@ public class Medarbejder {
             return new Destillation(startDato, slutDato, maltBatch, kornSort, vaeskeILiter, alkoholProcent, this);
         }
     }
+
+
+
+
 }
