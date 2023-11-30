@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Fad {
+    private Lager lager = null;
     private String oprindelsesLand;
     private ArrayList<String> historik;
     private ArrayList<Destillation> destillater;

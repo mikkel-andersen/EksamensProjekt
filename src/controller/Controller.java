@@ -1,5 +1,44 @@
 package controller;
 
+import model.*;
+import storage.Storage;
+
+import java.time.LocalDate;
+import java.util.List;
+
 public class Controller {
+    private Storage storage;
+    private static Controller controller = null;
+
+    private Controller() {
+        storage = new Storage();
+    }
+
+    public static Controller getController() {
+        if (controller == null) {
+            controller = new Controller();
+        }
+        return controller;
+    }
+
+    public Destillation opretDestillation(LocalDate startDato, LocalDate slutDato, String maltBatch, String kornSort,
+                                          double vaeskeILiter, double alkoholProcent, Medarbejder medarbejder) {
+        Destillation ds = medarbejder.opretDestillation(startDato, slutDato, maltBatch, kornSort, vaeskeILiter, alkoholProcent);
+        storage.addDestillation(ds);
+        return ds;
+    }
+
+    public List<Destillation> getDestillationer() {
+        return storage.getDestillationer();
+    }
+
+    public List<Fad> getFadListe() {
+        return storage.getFadListe();
+    }
+
+    public List<Lager> getLager() {
+        return storage.getLager();
+    }
+
 
 }
