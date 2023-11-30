@@ -41,15 +41,9 @@ class FadTest {
     void test_OpretPåfyldning_Med_For_Stort_Antal_Liter(){
 
         //Arrange
-        Fad fad = new Fad("Italien", new ArrayList<>(), 200, 1);
-        Medarbejder medarbejder = new Medarbejder("Jens");
-        Destillation destillation = medarbejder.opretDestillation(LocalDate.of(2023,11,30), LocalDate.of(2023,12,1), "Fire", "Byg", 300, 10);
-
-
         // Act & Assert - fejlhåndtering af for stort antal liter
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            fad.opretPåfyldning(LocalDate.now(), 300, destillation);
-        });
+            fad.opretPåfyldning(LocalDate.now(), 400, destillation);});
         assertEquals("Antal liter er større end fadets størrelse", exception.getMessage());
         assertEquals(0, fad.getPåfyldninger().size());
     }
