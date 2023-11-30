@@ -1,16 +1,18 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Lager {
     private int id;
-    private int størrelse;
+    private int kapacitet;
+    private int antalFad = 0;
     private String navn;
-    private ArrayList<Fad> fadliste;
+    private List<Fad> fadliste;
 
-    public Lager(int id, int størrelse, String navn) {
+    public Lager(int id, int kapacitet, String navn) {
         this.id = id;
-        this.størrelse = størrelse;
+        this.kapacitet = kapacitet;
         this.navn = navn;
         fadliste = new ArrayList<>();
     }
@@ -29,6 +31,7 @@ public class Lager {
         }
         fadliste.add(fad);
         fad.setLager(this);
+        antalFad++;
     }
 
     public void removeFad(Fad fad) {

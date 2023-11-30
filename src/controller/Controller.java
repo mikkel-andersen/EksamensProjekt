@@ -4,6 +4,7 @@ import model.*;
 import storage.Storage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
@@ -32,6 +33,17 @@ public class Controller {
         Lager lager = new Lager(id, stoerrelse, navn);
         storage.addLager(lager);
         return lager;
+    }
+
+    public Påfyldning opretPåfyldning(LocalDate dato, int antalLiter, Destillation destillation, Fad fad) {
+        Påfyldning påfyldning = fad.opretPåfyldning(dato, antalLiter, destillation);
+        return påfyldning;
+    }
+
+    public Fad opretFad(String oprindelsesLand, ArrayList<String> historik, int kapacitet, int id) {
+        Fad fad = new Fad(oprindelsesLand, historik, kapacitet, id);
+        storage.addFad(fad);
+        return fad;
     }
 
     public List<Destillation> getDestillationer() {
