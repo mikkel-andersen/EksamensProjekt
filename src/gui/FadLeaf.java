@@ -7,8 +7,10 @@ import model.Fad;
 public class FadLeaf implements GUIComponent {
     private Fad fad;
 
+
     public FadLeaf(Fad fad) {
         this.fad = fad;
+        this.fad.setId(fad.getId());
     }
 
     @Override
@@ -17,6 +19,7 @@ public class FadLeaf implements GUIComponent {
     @Override
     public String toString() {
 
-        return "FadID: " + fad.getId() + " - " + fad.getOprindelsesLand() + "Kapacitet: " + fad.getKapacitetILiter() + "Lager: " + fad.getLager();
+        return "FadID: " + fad.getId() + " - " + fad.getOprindelsesLand() + "Kapacitet: " +
+                fad.getKapacitetILiter() + "Lager: " + fad.getLager();
     }
 }
