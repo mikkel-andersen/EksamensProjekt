@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Fad {
     private Lager lager = null;
@@ -22,5 +23,25 @@ public class Fad {
 
     public void setLager(Lager lager) {
         this.lager = lager;
+    }
+
+    public List<Destillation> getDestillater() {
+        return new ArrayList<>(destillater);
+    }
+
+    public List<String> getHistorik() {
+        return new ArrayList<>(historik);
+    }
+
+    public void addHistorik(String historik) {
+        this.historik.add(historik);
+    }
+
+    public int getStoerrelse() {
+        return stoerrelse;
+    }
+
+    public int getId() {
+        return id;
     }
 }

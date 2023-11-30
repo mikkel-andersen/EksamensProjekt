@@ -28,6 +28,12 @@ public class Controller {
         return ds;
     }
 
+    public Lager opretLager(int id, String navn, int stoerrelse) {
+        Lager lager = new Lager(id, stoerrelse, navn);
+        storage.addLager(lager);
+        return lager;
+    }
+
     public List<Destillation> getDestillationer() {
         return storage.getDestillationer();
     }
