@@ -33,43 +33,43 @@ class LagerTest {
     @org.junit.jupiter.api.Test
     void test_addFad() {
         //Act & Assert
-        lager.addFad(fad);
-        assertEquals(1, lager.getFadliste().size());
-        assertEquals(fad, lager.getFadliste().get(0));
+        lager.addFad(fad); // Tilføjer fad 1 til lager 1
+        assertEquals(1, lager.getFadliste().size()); // Tjekker om lagerets fadliste kun indeholder 1 fad
+        assertEquals(fad, lager.getFadliste().get(0)); // Tjekker om fadet er blevet tilføjet korrekt til lager 1
     }
 
     @org.junit.jupiter.api.Test
     void test_addFlereFad() {
         //Act & Assert
-        lager.addFad(fad);
-        lager.addFad(fad2);
-        assertEquals(2, lager.getFadliste().size());
-        assertEquals(fad, lager.getFadliste().get(0));
-        assertEquals(fad2, lager.getFadliste().get(1));
+        lager.addFad(fad); // Tilføjer fad 1 til lager 1
+        lager.addFad(fad2); // Tilføjer fad 2 til lager 1
+        assertEquals(2, lager.getFadliste().size()); // Tjekker om lagerets fadliste indeholder 2 fad
+        assertEquals(fad, lager.getFadliste().get(0)); // Tjekker om fad 1 er blevet tilføjet korrekt til lager 1
+        assertEquals(fad2, lager.getFadliste().get(1)); // Tjekker om fad 2 er blevet tilføjet korrekt til lager 1
     }
 
     @org.junit.jupiter.api.Test
     void test_addFad_overskrider_kapacitet() {
         //Act & Assert
-        lager2.addFad(fad);
+        lager2.addFad(fad); // Tilføjer fad 1 til lager 2
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            lager2.addFad(fad2);
+            lager2.addFad(fad2); // Tilføjer fad 2 til lager 2
         });
-        assertEquals("Lageret er fyldt", exception.getMessage());
-        assertEquals(1, lager2.getFadliste().size());
-        assertEquals(fad, lager2.getFadliste().get(0));
+        assertEquals("Lageret er fyldt", exception.getMessage()); // Tjekker om fejlbeskeden er korrekt
+        assertEquals(1, lager2.getFadliste().size()); // Tjekker om lagerets fadliste kun indeholder 1 fad
+        assertEquals(fad, lager2.getFadliste().get(0)); // Tjekker om fadet er blevet tilføjet korrekt til lager 2
     }
 
     @org.junit.jupiter.api.Test
     void test_Tilføj_Samme_Fad() {
         //Act & Assert
-        lager.addFad(fad);
+        lager.addFad(fad); // Tilføjer fad
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            lager.addFad(fad);
+            lager.addFad(fad); // Tilføjer samme fad igen
         });
-        assertEquals("Fadet er allerede på lageret", exception.getMessage());
-        assertEquals(1, lager.getFadliste().size());
-        assertEquals(fad, lager.getFadliste().get(0));
+        assertEquals("Fadet er allerede på lageret", exception.getMessage()); // Tjekker om fejlbeskeden er korrekt
+        assertEquals(1, lager.getFadliste().size()); // Tjekker om lagerets fadliste kun indeholder 1 fad
+        assertEquals(fad, lager.getFadliste().get(0)); // Tjekker om fadet er blevet tilføjet korrekt til lager 1
     }
 
     @org.junit.jupiter.api.Test
@@ -79,10 +79,10 @@ class LagerTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             lager2.addFad(fad);
         });
-        assertEquals("Fadet er allerede på et andet lager", exception.getMessage());
-        assertEquals(1, lager.getFadliste().size());
-        assertEquals(0, lager2.getFadliste().size());
-        assertEquals(fad, lager.getFadliste().get(0));
+        assertEquals("Fadet er allerede på et andet lager", exception.getMessage()); // Tjekker om fejlbeskeden er korrekt
+        assertEquals(1, lager.getFadliste().size()); // Tjekker om fadet er blevet tilføjet til lager 1
+        assertEquals(0, lager2.getFadliste().size()); // Tjekker om fadet ikke er blevet tilføjet til lager 2
+        assertEquals(fad, lager.getFadliste().get(0)); // Tjekker om fadet er blevet tilføjet korrekt til lager 1
     }
 
 

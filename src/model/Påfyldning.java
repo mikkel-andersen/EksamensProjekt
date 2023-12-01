@@ -7,11 +7,12 @@ public class Påfyldning {
     private LocalDate paafyldningsDato;
     private Destillation destillation;
     private int liter;
-
+    //Fad attribut?
     public Påfyldning(LocalDate paafyldningsDato, int liter, Destillation destillation) {
         this.paafyldningsDato = paafyldningsDato;
         this.destillation = destillation;
         this.liter = liter;
+        destillation.setVaeskeILiter(destillation.getVaeskeILiter() - liter);
     }
 
     public LocalDate getPaafyldningsDato() {
