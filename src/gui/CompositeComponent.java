@@ -16,6 +16,5 @@ public class CompositeComponent implements GUIComponent{
         for(GUIComponent component : components){
             component.displayInfo();
         }
-
     }
 }

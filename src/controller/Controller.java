@@ -43,6 +43,8 @@ public class Controller {
     public Fad opretFad(String oprindelsesLand, ArrayList<String> historik, int kapacitet, int id) {
         Fad fad = new Fad(oprindelsesLand, historik, kapacitet, id);
         storage.addFad(fad);
+
+
         return fad;
     }
 

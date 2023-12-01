@@ -31,7 +31,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         controller = Controller.getController();
 
-        BorderPane root = new BorderPane();
+        TabPane root = new TabPane();
         Scene scene = new Scene(root, 600, 400);
 
         // Create ListView to display Fads
@@ -39,21 +39,25 @@ public class MainApp extends Application {
         updateFadListView();
 
         // Create button to create a new Fad
+        Tab tab = new Tab("Fad");
+
+
+        VBox content = new VBox(10);
+        content.setPadding(new javafx.geometry.Insets(10));
+
         Button createFadButton = new Button("Create Fad");
         createFadButton.setOnAction(e -> showCreateFadDialog());
 
-        VBox buttonContainer = new VBox(10);
-        buttonContainer.getChildren().addAll(createFadButton);
-        buttonContainer.setPadding(new Insets(10, 20, 10, 20));
+        content.getChildren().addAll(createFadButton, fadListView);
+        tab.setContent(content);
+        root.getTabs().add(tab);
 
-
-        root.setLeft(fadListView);
-        root.setRight(buttonContainer);
 
         primaryStage.setTitle("Fad Application");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 
     private void showCreateFadDialog() {
         Dialog<Fad> dialog = new Dialog<>();
@@ -90,7 +94,7 @@ public class MainApp extends Application {
                     // Get other field values as needed
 
                     // Create the Fad and add it to the controller
-                    Fad fad = controller.opretFad(oprindelsesLand, new ArrayList<>(), kapacitet, 1);
+                    Fad fad = controller.opretFad(oprindelsesLand, new ArrayList<>(), kapacitet, controller.getFadListe().size() + 1);
 
                     // Update the ListView
                     updateFadListView();
