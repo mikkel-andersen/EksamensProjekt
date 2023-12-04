@@ -7,18 +7,18 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
-import ordination.Laegemiddel;
-import ordination.Patient;
+import model.Destillation;
+import model.Fad;
+import model.Lager;
 
 public class FadeOgDestillationerPane extends GridPane {
 
-	private ListView<Patient> lstPatient = new ListView<>();
-	private ListView<Laegemiddel> lstLaegemiddel = new ListView<>();
-	private ToggleGroup toggleGroup = new ToggleGroup();
-	private RadioButton rbPN = new RadioButton("PN");
-	private RadioButton rbFast = new RadioButton("Daglig fast");
-	private RadioButton rbSkaev = new RadioButton("Daglig skæv");
-	private Button btnOpret = new Button("Opret ordination");
+	private ListView<Fad> lstFad = new ListView<>();
+	private ListView<Destillation> lstDestillation = new ListView<>();
+	private ListView<Lager> lstLager = new ListView<>();
+	private  Button btnOpretLager = new Button("Opret Lager");
+	private Button btnOpretFad = new Button("Opret Fad");
+	private Button btnOpretDestillation = new Button("Opret destillation");
 	private Label lblError;
 
 	private Controller controller;
@@ -35,33 +35,28 @@ public class FadeOgDestillationerPane extends GridPane {
 		lblError = new Label();
 		lblError.setTextFill(Color.RED);
 
-		rbPN.setUserData(TypeOrdination.PN);
-		rbSkaev.setUserData(TypeOrdination.SKAEV);
-		rbFast.setUserData(TypeOrdination.FAST);
-		toggleGroup.getToggles().add(rbPN);
-		toggleGroup.getToggles().add(rbSkaev);
-		toggleGroup.getToggles().add(rbFast);
 
-		this.add(new Label("Vælg patient"), 0, 0);
-		this.add(lstPatient, 0, 1, 1, 2);
-		lstPatient.getItems().setAll(controller.getAllPatienter());
+		this.add(new Label("Vælg fad"), 0, 0);
+		this.add(lstFad, 0, 1, 1, 2);
+		lstFad.getItems().setAll(controller.getFadListe());
 
-		this.add(new Label("Vælg lægemiddel"), 1, 0);
-		this.add(lstLaegemiddel, 1, 1, 1, 2);
-		lstLaegemiddel.getItems().setAll(controller.getAllLaegemidler());
+		this.add(new Label("Vælg destillation"), 1, 0);
+		this.add(lstDestillation, 1, 1, 1, 2);
+		lstDestillation.getItems().setAll(controller.getDestillationer());
+		lstLager.getItems().setAll(controller.getLager());
 
-		this.add(new Label("Vælg ordination"), 2, 0);
+		this.add(new Label("Vælg lager"), 2, 0);
 		GridPane innerPane = new GridPane();
 		innerPane.setVgap(10);
-		innerPane.add(rbPN, 0, 0);
-		innerPane.add(rbSkaev, 0, 1);
-		innerPane.add(rbFast, 0, 2);
+		innerPane.add(lstLager, 0, 0);
 
 		this.add(innerPane, 2, 1);
 
 		this.add(lblError, 0, 3, 1, 2);
-		this.add(btnOpret, 2, 2);
-		btnOpret.setOnAction(event -> actionOpret());
+		this.add(btnOpretLager, 2, 1);
+		this.add(btnOpretDestillation,2,3);
+		this.add(btnOpretFad, 2, 2);
+		btnOpretFad.setOnAction(event -> actionOpret());
 
 		RowConstraints row1 = new RowConstraints();
 		RowConstraints row2 = new RowConstraints();
@@ -72,15 +67,15 @@ public class FadeOgDestillationerPane extends GridPane {
 
 	public void actionOpret() {
 		lblError.setText("");
-		if (lstPatient.getSelectionModel().getSelectedItem() == null) {
+		if (lstFad.getSelectionModel().getSelectedItem() == null) {
 			lblError.setText("Du skal vælge en patient.");
-		} else if (lstLaegemiddel.getSelectionModel().getSelectedItem() == null) {
+		} else if (lstDestillation.getSelectionModel().getSelectedItem() == null) {
 			lblError.setText("Du skal vælge et lægemiddel.");
 		} else if (toggleGroup.getSelectedToggle() == null) {
 			lblError.setText("Du skal vælge en ordinationstype.");
 		} else {
-			OpretFadDialog dia = new OpretFadDialog(lstPatient
-					.getSelectionModel().getSelectedItem(), lstLaegemiddel
+			OpretFadDialog dia = new OpretFadDialog(lstFad
+					.getSelectionModel().getSelectedItem(), lstDestillation
 					.getSelectionModel().getSelectedItem(),
 					(TypeOrdination) toggleGroup.getSelectedToggle()
 					.getUserData());
@@ -89,8 +84,8 @@ public class FadeOgDestillationerPane extends GridPane {
 	}
 	
 	public void updateControls() {
-		lstPatient.getSelectionModel().clearSelection();
-		lstLaegemiddel.getSelectionModel().clearSelection();
-		toggleGroup.selectToggle(null);
+		lstFad.getSelectionModel().clearSelection();
+		lstDestillation.getSelectionModel().clearSelection();
+		//toggleGroup.selectToggle(null);
 	}
 }
