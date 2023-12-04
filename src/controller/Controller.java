@@ -60,5 +60,8 @@ public class Controller {
         return storage.getLager();
     }
 
+    public void createSomeObjects() {
+        Medarbejder m1 = new Medarbejder("Hans");
 
+}
 }
