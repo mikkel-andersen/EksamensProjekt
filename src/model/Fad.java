@@ -1,27 +1,31 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Fad {
     private Lager lager = null;
     private String oprindelsesLand;
-    private ArrayList<String> historik;
-    private ArrayList<Destillation> destillater;
-    private List<Påfyldning> påfyldninger;
+    private String fadType;
+    private ArrayList<String> historik = new ArrayList<>();
+    private ArrayList<Destillation> destillater = new ArrayList<>();
+    private List<Påfyldning> påfyldninger = new ArrayList<>();
     private int kapacitetILiter;
     private int id;
+    private boolean whisky;
+
+
+
     private double antalLiterPaafyldt;
 
-    public Fad(String oprindelsesLand, ArrayList<String> historik, int kapacitet, int id) {
+    public Fad(String oprindelsesLand, ArrayList<String> historik, String fadType, int kapacitet, int id) {
         this.oprindelsesLand = oprindelsesLand;
-        this.historik = historik;
+        this.fadType = fadType;
         this.kapacitetILiter = kapacitet;
         this.id = id;
         this.antalLiterPaafyldt = 0;
-        this.destillater = new ArrayList<>();
-        this.påfyldninger = new ArrayList<>();
     }
 
     public void setLager(Lager lager) {
@@ -48,6 +52,18 @@ public class Fad {
         return id;
     }
 
+    public void erWhisky() {
+        if (ChronoUnit.YEARS.between(LocalDate.now(), påfyldninger.get(0).getPaafyldningsDato()) >= 3) {
+            whisky = true;
+        } else {
+            whisky = false;
+        }
+    }
+
+    public boolean isWhisky() {
+        return whisky;
+    }
+
     public List<Påfyldning> getPåfyldninger() {
         return påfyldninger;
     }
@@ -66,6 +82,19 @@ public class Fad {
             historik.add(påfyldning.toString());
             påfyldninger.add(påfyldning);
             return påfyldning;
+        }
+    }
+
+    public Whisky aftapFad() {
+        if (antalLiterPaafyldt == 0) {
+            throw new IllegalArgumentException("Der er ikke påfyldt noget på fadet");
+        } else if (isWhisky()) {
+            throw new IllegalArgumentException("Fadet er ikke gammelt nok til at blive til whisky");
+        } else {
+            Whisky whisky = new Whisky(LocalDate.now(), (int) antalLiterPaafyldt, 57.5, "Whisky", "Whisky på " + oprindelsesLand + " ", "Whisky");
+            antalLiterPaafyldt = 0;
+            historik.add(whisky.toString());
+            return whisky;
         }
     }
 
@@ -108,4 +137,5 @@ public class Fad {
     public void setAntalLiterPaafyldt(double antalLiterPaafyldt) {
         this.antalLiterPaafyldt = antalLiterPaafyldt;
     }
+
 }

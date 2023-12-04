@@ -20,7 +20,7 @@ class FadTest {
         ArrayList<String> historik = new ArrayList<>();
         medarbejder = new Medarbejder("Jens");
         destillation = medarbejder.opretDestillation(LocalDate.of(2023,11,30), LocalDate.of(2023,12,1), "Fire", "Byg", 300, 10);
-        fad = new Fad("Spanien", historik, 300,1);
+        fad = new Fad("Spanien", historik, "Bourbon", 300,1);
 
     }
 

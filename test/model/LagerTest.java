@@ -24,8 +24,8 @@ class LagerTest {
         lager2 = new Lager(2, 1, "Sall Lager2");
         medarbejder = new Medarbejder("Jens");
         destillation = medarbejder.opretDestillation(LocalDate.of(2023,11,30), LocalDate.of(2023,12,1), "Fire", "Byg", 300, 10);
-        fad = new Fad("Spanien", historik,150,1);
-        fad2 = new Fad("Italien", historik,150,2);
+        fad = new Fad("Spanien", historik, "Sherry", 150,1);
+        fad2 = new Fad("Italien", historik, "Bourbon", 150,2);
         påfyldning = fad.opretPåfyldning(LocalDate.of(2023,11,30), 150, destillation);
         påfyldning2 = fad2.opretPåfyldning(LocalDate.of(2023,11,30), 150, destillation);
     }

@@ -40,8 +40,8 @@ public class Controller {
         return påfyldning;
     }
 
-    public Fad opretFad(String oprindelsesLand, ArrayList<String> historik, int kapacitet, int id) {
-        Fad fad = new Fad(oprindelsesLand, historik, kapacitet, id);
+    public Fad opretFad(String oprindelsesLand, ArrayList<String> historik, String fadType, int kapacitet, int id) {
+        Fad fad = new Fad(oprindelsesLand, historik, fadType, kapacitet, id);
         storage.addFad(fad);
 
 

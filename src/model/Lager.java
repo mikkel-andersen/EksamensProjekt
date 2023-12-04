@@ -17,12 +17,6 @@ public class Lager {
         fadliste = new ArrayList<>();
     }
 
-    /*
-       Add metode til lagerets fadliste
-       mangler måske en condition, så der ikke kan være den samme tønde på flere lagere
-       Kan evt. løses med en instans variabel.
-     */
-
     public void addFad(Fad fad) {
         if(antalFad >= kapacitet){
             throw new IllegalArgumentException("Lageret er fyldt");
