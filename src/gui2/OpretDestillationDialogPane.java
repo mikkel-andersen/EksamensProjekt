@@ -1,13 +1,12 @@
 package gui2;
 
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import model.Destillation;
 
 import java.awt.*;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import java.time.LocalDate;
+
 import javafx.scene.layout.GridPane;
 import model.Destillation;
 import controller.Controller;
@@ -17,12 +16,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.Destillation;
+import model.Medarbejder;
 
 
-    public class OpretDestillationDialogPane extends Dialog<Destillation> {
+public class OpretDestillationDialogPane extends Dialog<Destillation> {
 
-        private TextField startDatoField = new TextField();
-        private TextField slutDatoField = new TextField();
+        private DatePicker startDatoField = new DatePicker();
+        private DatePicker slutDatoField = new DatePicker();
         private TextField maltBatchField = new TextField();
         private TextField kornSortField = new TextField();
         private TextField vaeskeILiterField = new TextField();
@@ -57,20 +57,25 @@ import model.Destillation;
             grid.add(new Label("Medarbejder:"), 0, 6);
             grid.add(medarbejderField, 1, 6);
 
+
             this.getDialogPane().setContent(grid);
 
+            this.setResultConverter(dialogButton -> {
+                if(dialogButton == ButtonType.OK){
+                    LocalDate startDato = startDatoField.getValue();
+                    LocalDate slutDato = slutDatoField.getValue();
+                    String maltBatch = maltBatchField.getText();
+                    String kornSort = kornSortField.getText();
+                    double vaeskeILiter = Double.parseDouble(vaeskeILiterField.getText());
+                    double alkoholProcent = Double.parseDouble(alkoholProcentField.getText());
+                    String medarbejderObject = medarbejderField.getText();
+                    Medarbejder medarbejder = new Medarbejder(medarbejderObject);
 
+                    Destillation createdDestillation = controller.opretDestillation(startDato, slutDato, maltBatch, kornSort, vaeskeILiter, alkoholProcent, medarbejder);
 
-
+                    return createdDestillation;
+                }
+                return null;
+            });
         }
-
-
-
-
-
-
-
-
-
-
 }

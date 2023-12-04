@@ -77,4 +77,11 @@ public class Destillation {
     public void setMedarbejder(Medarbejder medarbejder) {
         this.medarbejder = medarbejder;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Destillation: %s - %s, Malt Batch: %s, Korn Sort: %s, Vaeske in Liters: %.2f, Alcohol Percentage: %.2f%%, Medarbejder: %s",
+                startDato, slutDato, maltBatch, kornSort, vaeskeILiter, alkoholProcent, medarbejder.getNavn());
+    }
+
 }
