@@ -22,6 +22,10 @@ public class Controller {
         return controller;
     }
 
+    public Storage getStorage() {
+        return storage;
+    }
+
     public Destillation opretDestillation(LocalDate startDato, LocalDate slutDato, String maltBatch, String kornSort,
                                           double vaeskeILiter, double alkoholProcent, Medarbejder medarbejder) {
         Destillation ds = medarbejder.opretDestillation(startDato, slutDato, maltBatch, kornSort, vaeskeILiter, alkoholProcent);
@@ -40,10 +44,10 @@ public class Controller {
         return påfyldning;
     }
 
-    public Fad opretFad(String oprindelsesLand, ArrayList<String> historik, String fadType, int kapacitet, int id) {
-        Fad fad = new Fad(oprindelsesLand, historik, fadType, kapacitet, id);
+    public Fad opretFad(String oprindelsesLand, ArrayList<String> historik, String fadType, int kapacitet) {
+        int nytID = storage.getFadListe().size() + 1;
+        Fad fad = new Fad(oprindelsesLand, historik, fadType, kapacitet, nytID);
         storage.addFad(fad);
-
 
         return fad;
     }

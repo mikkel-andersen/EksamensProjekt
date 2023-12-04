@@ -28,6 +28,17 @@ public class Fad {
         this.antalLiterPaafyldt = 0;
     }
 
+    public String getFadType() {
+        return fadType;
+    }
+
+    public void setFadType(String fadType) {
+        this.fadType = fadType;
+    }
+
+    public void setWhisky(boolean whisky) {
+        this.whisky = whisky;
+    }
     public void setLager(Lager lager) {
         this.lager = lager;
     }
@@ -138,4 +149,9 @@ public class Fad {
         this.antalLiterPaafyldt = antalLiterPaafyldt;
     }
 
+
+    @Override
+    public String toString() {
+        return "Fad ID: " + getId() + ", OprindelsesLand: " + getOprindelsesLand() + ", Fad Type: " + getFadType();
+    }
 }
