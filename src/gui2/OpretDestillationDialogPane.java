@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.Destillation;
 
+
     public class OpretDestillationDialogPane extends Dialog<Destillation> {
 
         private TextField startDatoField = new TextField();
@@ -58,7 +59,7 @@ import model.Destillation;
 
             this.getDialogPane().setContent(grid);
 
-            this.setResultConverter(dia);
+
 
 
         }
