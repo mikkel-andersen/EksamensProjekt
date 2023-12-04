@@ -56,7 +56,7 @@ public class FadeOgDestillationerPane extends GridPane {
 		this.add(btnOpretLager, 2, 1);
 		this.add(btnOpretDestillation,2,3);
 		this.add(btnOpretFad, 2, 2);
-		btnOpretFad.setOnAction(event -> actionOpret());
+		btnOpretFad.setOnAction(event -> actionOpretFad());
 
 		RowConstraints row1 = new RowConstraints();
 		RowConstraints row2 = new RowConstraints();
@@ -65,20 +65,9 @@ public class FadeOgDestillationerPane extends GridPane {
 		getRowConstraints().addAll(row1, row2, row3);
 	}
 
-	public void actionOpret() {
-		lblError.setText("");
-		if (lstFad.getSelectionModel().getSelectedItem() == null) {
-			lblError.setText("Du skal vælge en patient.");
-		} else if (lstDestillation.getSelectionModel().getSelectedItem() == null) {
-			lblError.setText("Du skal vælge et lægemiddel.");
-		} else if (toggleGroup.getSelectedToggle() == null) {
-			lblError.setText("Du skal vælge en ordinationstype.");
-		} else {
-			OpretFadDialog dia = new OpretFadDialog(lstFad
-					.getSelectionModel().getSelectedItem(), lstDestillation
-					.getSelectionModel().getSelectedItem(),
-					(TypeOrdination) toggleGroup.getSelectedToggle()
-					.getUserData());
+	public void actionOpretFad() {
+		OpretFadDialog dia = new OpretFadDialog();
+
 			dia.showAndWait();
 		}
 	}

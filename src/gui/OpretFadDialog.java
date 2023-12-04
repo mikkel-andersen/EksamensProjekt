@@ -14,17 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ordination.Laegemiddel;
-import ordination.Patient;
 
 import java.time.LocalTime;
 
 public class OpretFadDialog extends Stage {
-
-	private final Patient patient;
-	private final Laegemiddel laegemiddel;
-	private final TypeOrdination type;
-
 	private DatePicker startDato = new DatePicker();
 	private DatePicker slutDato = new DatePicker();
 	private TextField txtStyk = new TextField();
@@ -33,23 +26,17 @@ public class OpretFadDialog extends Stage {
 	private Button btnFortryd = new Button("Fortryd");
 
 	private Label lblError = new Label();
-	private DagligFastPane dagligFastPane;
-	private DagligSkaevPane dagligSkaevPane;
 
 	private Controller controller;
 
-	public OpretFadDialog(Patient patient, Laegemiddel laegemiddel,
-						  TypeOrdination type) {
+	public OpretFadDialog() {
 	    this.controller = Controller.getController();
-	    
-		this.patient = patient;
-		this.laegemiddel = laegemiddel;
-		this.type = type;
+
 
 		this.initStyle(StageStyle.UTILITY);
 		this.initModality(Modality.APPLICATION_MODAL);
 		this.setResizable(false);
-		this.setTitle("Ordinér medicin!");
+		this.setTitle("Opret fad");
 
 		GridPane pane = new GridPane();
 		Scene scene = new Scene(pane);
