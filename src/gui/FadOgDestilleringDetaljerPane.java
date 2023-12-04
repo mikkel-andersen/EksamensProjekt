@@ -11,7 +11,7 @@ import ordination.PN;
 
 import java.time.LocalDate;
 
-public class OrdinationDetailsPane extends GridPane {
+public class FadOgDestilleringDetaljerPane extends GridPane {
     private TextField txtStarttid, txtSluttid, txtLaegemiddel, txtDoegndosis,
         txtTotalDosis;
     private TextField txtType = new TextField();
@@ -34,7 +34,7 @@ public class OrdinationDetailsPane extends GridPane {
 
     private Controller controller;
 
-    public OrdinationDetailsPane() {
+    public FadOgDestilleringDetaljerPane() {
         controller = Controller.getController();
         setHgap(20);
         setVgap(10);

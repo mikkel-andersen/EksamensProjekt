@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import ordination.Laegemiddel;
 import ordination.Patient;
 
-public class OpretOrdinationPane extends GridPane {
+public class FadeOgDestillationerPane extends GridPane {
 
 	private ListView<Patient> lstPatient = new ListView<>();
 	private ListView<Laegemiddel> lstLaegemiddel = new ListView<>();
@@ -23,7 +23,7 @@ public class OpretOrdinationPane extends GridPane {
 
 	private Controller controller;
 
-	public OpretOrdinationPane() {
+	public FadeOgDestillationerPane() {
 
 		controller = Controller.getController();
 
@@ -79,7 +79,7 @@ public class OpretOrdinationPane extends GridPane {
 		} else if (toggleGroup.getSelectedToggle() == null) {
 			lblError.setText("Du skal vælge en ordinationstype.");
 		} else {
-			OpretOrdinationDialog dia = new OpretOrdinationDialog(lstPatient
+			OpretFadDialog dia = new OpretFadDialog(lstPatient
 					.getSelectionModel().getSelectedItem(), lstLaegemiddel
 					.getSelectionModel().getSelectedItem(),
 					(TypeOrdination) toggleGroup.getSelectedToggle()

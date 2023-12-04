@@ -19,7 +19,7 @@ import ordination.Patient;
 
 import java.time.LocalTime;
 
-public class OpretOrdinationDialog extends Stage {
+public class OpretDestillationDialog extends Stage {
 
 	private final Patient patient;
 	private final Laegemiddel laegemiddel;
@@ -38,8 +38,8 @@ public class OpretOrdinationDialog extends Stage {
 
 	private Controller controller;
 
-	public OpretOrdinationDialog(Patient patient, Laegemiddel laegemiddel,
-			TypeOrdination type) {
+	public OpretDestillationDialog(Patient patient, Laegemiddel laegemiddel,
+                                   TypeOrdination type) {
 	    this.controller = Controller.getController();
 	    
 		this.patient = patient;

@@ -10,7 +10,7 @@ import ordination.*;
 public class VisOrdinationPane extends GridPane {
 	private ListView<Patient> lstPatient = new ListView<>();
 	private ListView<Ordination> lstOrdination = new ListView<>();
-	private OrdinationDetailsPane ordinationDetailsPane = new OrdinationDetailsPane();
+	private FadOgDestilleringDetaljerPane ordinationDetailsPane = new FadOgDestilleringDetaljerPane();
 
 	private Controller controller;
 

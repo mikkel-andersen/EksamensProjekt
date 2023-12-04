@@ -46,7 +46,7 @@ public class StartVindue extends Application {
 		Tab tabVis = new Tab("Vis ordinationer");
 		Tab tabStatistik = new Tab("Vis statistik");
 
-		OpretOrdinationPane opretOrdinationsPane = new OpretOrdinationPane();
+		FadeOgDestillationerPane opretOrdinationsPane = new FadeOgDestillationerPane();
 		tabOpret.setContent(opretOrdinationsPane);
 		VisOrdinationPane visOrdinationPane = new VisOrdinationPane();
 		tabVis.setContent(visOrdinationPane);
