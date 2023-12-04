@@ -13,6 +13,7 @@ import model.Fad;
     private ListView<Destillation> lstDestillation = new ListView<>();
     private Controller controller;
     private Button btnOpretFad = new Button("Opret Fad");
+    private Button btnOpretDestillation = new Button("Opret Destillation");
 
     public void updateControls() {
         lstFad.getSelectionModel().clearSelection();
@@ -28,10 +29,12 @@ import model.Fad;
         this.add(lstFad, 0, 0);
         this.add(lstDestillation, 1, 0);
         this.add(btnOpretFad, 4, 0);
+        this.add(btnOpretDestillation, 5, 0);
         lstFad.getItems().setAll(controller.getFadListe());
         lstDestillation.getItems().setAll(controller.getDestillationer());
 
         btnOpretFad.setOnAction(event -> openCreateFadDialog());
+        btnOpretDestillation.setOnAction(event -> openCreateDestillationDialog());
 
     }
 
@@ -44,6 +47,18 @@ import model.Fad;
                     controller.getStorage().addFad(createdFad);
                     // Update the ListView or any other UI components
                     lstFad.getItems().setAll(controller.getFadListe());
+                }
+            });
+        }
+
+        private void openCreateDestillationDialog() {
+            OpretDestillationDialogPane createDestillationDialog = new OpretDestillationDialogPane(controller);
+            createDestillationDialog.showAndWait().ifPresent(createdDestillation -> {
+                // Handle the created Fad (e.g., add it to the list)
+                if (createdDestillation != null) {
+                    controller.getStorage().addDestillation(createdDestillation);
+                    // Update the ListView or any other UI components
+                    lstDestillation.getItems().setAll(controller.getDestillationer());
                 }
             });
         }
