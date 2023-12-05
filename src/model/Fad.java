@@ -15,9 +15,6 @@ public class Fad {
     private int kapacitetILiter;
     private int id;
     private boolean whisky;
-
-
-
     private double antalLiterPaafyldt;
 
     public Fad(String oprindelsesLand, ArrayList<String> historik, String fadType, int kapacitet, int id) {
