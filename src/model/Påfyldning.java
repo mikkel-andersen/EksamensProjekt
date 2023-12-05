@@ -22,13 +22,6 @@ public class Påfyldning {
         return paafyldningsDato;
     }
 
-    public int getLiter() {
-        return liter;
-    }
-
-    public Destillation getDestillation() {
-        return destillation;
-    }
 
     @Override
     public String toString() {
@@ -50,11 +43,5 @@ public class Påfyldning {
         return alkoholProcent;
     }
 
-    public void setDestillation(Destillation destillation) {
-        this.destillation = destillation;
-    }
 
-    public void setLiter(int liter) {
-        this.liter = liter;
-    }
 }
