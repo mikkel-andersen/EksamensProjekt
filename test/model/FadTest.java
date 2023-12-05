@@ -20,7 +20,7 @@ class FadTest {
         ArrayList<String> historik = new ArrayList<>();
         medarbejder = new Medarbejder("Jens");
         destillation = medarbejder.opretDestillation(LocalDate.of(2023,11,30), LocalDate.of(2023,12,1), "Fire", "Byg", 300, 10);
-        fad = new Fad("Spanien", historik, "Bourbon", 300,1);
+        fad = new Fad("Spanien", "Bourbon", 300,1);
 
     }
 
@@ -34,7 +34,6 @@ class FadTest {
         assertEquals(LocalDate.of(2023,11,30), faktiskResultat.getPaafyldningsDato()); // Tjekker om datoen er blevet tilføjet til påfyldningen
         assertEquals(destillation, faktiskResultat.getDestillation()); // Tjekker om destillationen er blevet tilføjet til påfyldningen
         assertEquals(fad.getPåfyldninger().get(0), faktiskResultat); // Tjekker om påfyldningen er blevet tilføjet til fadets påfyldningsliste
-        assertEquals(fad.getHistorik().get(0), faktiskResultat.toString()); // Tjekker om påfyldningen er blevet tilføjet til historikken
         assertEquals(0, destillation.getVaeskeILiter()); // Tjekker om destillationens væske er blevet trukket fra
     }
 
