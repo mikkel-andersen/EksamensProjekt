@@ -152,6 +152,29 @@ public class Fad {
 
     @Override
     public String toString() {
-        return "Fad ID: " + getId() + ", OprindelsesLand: " + getOprindelsesLand() + ", Fad Type: " + getFadType();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Fad ID: ").append(id)
+                .append("\nOprindelsesland: ").append(oprindelsesLand)
+                .append("\nFadtype: ").append(fadType)
+                .append("\nKapacitet i liter: ").append(kapacitetILiter)
+                .append("\nAntal liter påfyldt: ").append(antalLiterPaafyldt)
+                .append("\nEr Whisky: ").append(whisky)
+                .append("\nHistorik:\n");
+
+        for (String history : historik) {
+            stringBuilder.append("  - ").append(history).append("\n");
+        }
+
+        stringBuilder.append("Påfyldninger:\n");
+        for (Påfyldning påfyldning : påfyldninger) {
+            stringBuilder.append("  - ").append(påfyldning.toString()).append("\n");
+        }
+
+        stringBuilder.append("Destillater:\n");
+        for (Destillation destillation : destillater) {
+            stringBuilder.append("  - ").append(destillation.toString()).append("\n");
+        }
+
+        return stringBuilder.toString();
     }
 }

@@ -33,8 +33,9 @@ public class Controller {
         return ds;
     }
 
-    public Lager opretLager(int id, String navn, int stoerrelse) {
-        Lager lager = new Lager(id, stoerrelse, navn);
+    public Lager opretLager(String navn, int stoerrelse) {
+        int nytID = storage.getLager().size() + 1;
+        Lager lager = new Lager(nytID, stoerrelse, navn);
         storage.addLager(lager);
         return lager;
     }

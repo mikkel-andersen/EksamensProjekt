@@ -16,7 +16,6 @@ public class OpretFadDialogPane extends Dialog<Fad> {
     private TextField destillationerField = new TextField();
     private TextField fadTypeField = new TextField();
     private TextField kapacitetField = new TextField();
-
     private Controller controller;
 
     public OpretFadDialogPane(Controller controller) {

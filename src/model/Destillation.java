@@ -80,8 +80,14 @@ public class Destillation {
 
     @Override
     public String toString() {
-        return String.format("Destillation: %s - %s, Malt Batch: %s, Korn Sort: %s, Vaeske in Liters: %.2f, Alcohol Percentage: %.2f%%, Medarbejder: %s",
-                startDato, slutDato, maltBatch, kornSort, vaeskeILiter, alkoholProcent, medarbejder.getNavn());
+        return "Destillation:\n" +
+                "Start Dato: " + startDato + "\n" +
+                "Slut Dato: " + slutDato + "\n" +
+                "Malt Batch: " + maltBatch + "\n" +
+                "Korn Sort: " + kornSort + "\n" +
+                "Væske i Liter: " + vaeskeILiter + "\n" +
+                "Alkoholprocent: " + alkoholProcent + "\n" +
+                "Medarbejder: " + medarbejder.toString();
     }
 
 }

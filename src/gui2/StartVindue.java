@@ -1,7 +1,6 @@
 package gui2;
 
 import controller.Controller;
-import gui2.OpretFadOgDestillationerPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
@@ -41,14 +40,18 @@ public class StartVindue extends Application {
     private void initTabPane(TabPane tabPane){
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        Tab tabOpret = new Tab("Opret fad og destillationer");
+        Tab tabOpretFad = new Tab("Opret fad og destillationer");
+        Tab tabOpretLager = new Tab("Opret & Se Lager");
 
         OpretFadOgDestillationerPane opretFadOgDestillationerPane = new OpretFadOgDestillationerPane();
-        tabOpret.setContent(opretFadOgDestillationerPane);
+        tabOpretFad.setContent(opretFadOgDestillationerPane);
 
-        tabPane.getTabs().add(tabOpret);
+        OpretOgVisLagerPane opretOgVisLagerPane = new OpretOgVisLagerPane();
+        tabOpretLager.setContent(opretOgVisLagerPane);
 
-        tabOpret.setOnSelectionChanged(event -> opretFadOgDestillationerPane.updateControls());
+        tabPane.getTabs().addAll(tabOpretFad, tabOpretLager);
+
+        tabOpretFad.setOnSelectionChanged(event -> opretFadOgDestillationerPane.updateControls());
 
 
 

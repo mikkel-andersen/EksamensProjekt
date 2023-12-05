@@ -76,4 +76,22 @@ public class Lager {
     public void setFadliste(List<Fad> fadliste) {
         this.fadliste = fadliste;
     }
+
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Lager ID: ").append(id)
+                .append("\nNavn: ").append(navn)
+                .append("\nKapacitet: ").append(kapacitet)
+                .append("\nAntal Fad: ").append(antalFad)
+                .append("\nFadliste:\n");
+
+        for (Fad fad : fadliste) {
+            stringBuilder.append("  - ").append(fad.toString()).append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
+
 }
