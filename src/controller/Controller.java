@@ -40,14 +40,14 @@ public class Controller {
         return lager;
     }
 
-    public Påfyldning opretPåfyldning(LocalDate dato, int antalLiter, Destillation destillation, Fad fad) {
-        Påfyldning påfyldning = fad.opretPåfyldning(dato, antalLiter, destillation);
+    public Påfyldning opretPåfyldning(LocalDate dato, ArrayList<Mængde> mængder, Fad fad) {
+        Påfyldning påfyldning = fad.opretPåfyldning(dato, mængder, fad);
         return påfyldning;
     }
 
-    public Fad opretFad(String oprindelsesLand, ArrayList<String> historik, String fadType, int kapacitet) {
+    public Fad opretFad(String oprindelsesLand, String fadType, int kapacitet) {
         int nytID = storage.getFadListe().size() + 1;
-        Fad fad = new Fad(oprindelsesLand, historik, fadType, kapacitet, nytID);
+        Fad fad = new Fad(oprindelsesLand, fadType, kapacitet, nytID);
         storage.addFad(fad);
 
         return fad;

@@ -11,14 +11,14 @@ public class Whisky {
     private String beskrivelse;
     private String type;
     private boolean fortyndet;
-    private ArrayList<Fad> fadListe = new ArrayList<>();
 
 
-    public Whisky(LocalDate aftapningsDato, double antalLiter, double alkoholProcent, ArrayList<Fad> fadListe) {
+
+    public Whisky(LocalDate aftapningsDato, double antalLiter, double alkoholProcent) {
         this.aftapningsDato = aftapningsDato;
         this.antalLiter = antalLiter;
         this.alkoholProcent = alkoholProcent;
-        this.fadListe = fadListe;
+
     }
 
     public LocalDate getAftapningsDato() {
@@ -65,25 +65,6 @@ public class Whisky {
         return type;
     }
 
-    public void setType(String type) {
-        if(fortyndet == false){
-            this.type += "Cask Strength";
-        }
-        if(fadListe.size() == 1){
-            this.type += "Single Cask";
-        }
-        else {
-            this.type += "Single malt";
-            }
-    }
-
-    public ArrayList<Fad> getFadListe() {
-        return fadListe;
-    }
-
-    public void addFad(Fad fad){
-        fadListe.add(fad);
-    }
 
 
 

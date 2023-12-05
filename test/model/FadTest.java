@@ -30,9 +30,7 @@ class FadTest {
     void opretPåfyldning_test_korrekte_inputs() {
         //Act & Assert
         Påfyldning faktiskResultat = fad.opretPåfyldning(LocalDate.of(2023,11,30), 300, destillation);
-        assertEquals(300, faktiskResultat.getLiter()); // Tjekker om antal liter er blevet tilføjet til påfyldningen
         assertEquals(LocalDate.of(2023,11,30), faktiskResultat.getPaafyldningsDato()); // Tjekker om datoen er blevet tilføjet til påfyldningen
-        assertEquals(destillation, faktiskResultat.getDestillation()); // Tjekker om destillationen er blevet tilføjet til påfyldningen
         assertEquals(fad.getPåfyldninger().get(0), faktiskResultat); // Tjekker om påfyldningen er blevet tilføjet til fadets påfyldningsliste
         assertEquals(0, destillation.getVaeskeILiter()); // Tjekker om destillationens væske er blevet trukket fra
     }

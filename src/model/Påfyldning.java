@@ -2,19 +2,21 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Påfyldning {
 
     private LocalDate paafyldningsDato;
-    private Destillation destillation;
-    private int liter;
-    //Fad attribut?
-    public Påfyldning(LocalDate paafyldningsDato, int liter, Destillation destillation) {
+    private ArrayList<Mængde> mængder;
+    private Fad fad;
+
+    public Påfyldning(LocalDate paafyldningsDato, ArrayList<Mængde> mængder, Fad fad) {
         this.paafyldningsDato = paafyldningsDato;
-        this.destillation = destillation;
-        this.liter = liter;
-        destillation.setVaeskeILiter(destillation.getVaeskeILiter() - liter);
+        this.mængder = mængder;
+        this.fad = fad;
     }
+
+
 
     public LocalDate getPaafyldningsDato() {
         return paafyldningsDato;
@@ -30,12 +32,22 @@ public class Påfyldning {
 
     @Override
     public String toString() {
-        return "Påfyldning af " + getLiter()
-                + " liter d. " + getPaafyldningsDato();
+                return "liter d. " + getPaafyldningsDato();
     }
 
     public void setPaafyldningsDato(LocalDate paafyldningsDato) {
         this.paafyldningsDato = paafyldningsDato;
+    }
+
+    public double udregnAlkoholProcent() {
+        double alkoholProcent = 0.0;
+        double totalMængde = 0.0;
+        for (Mængde mængde : mængder) {
+            alkoholProcent += mængde.getMængde() * (mængde.getDestillation().getAlkoholProcent() / 100);
+            totalMængde += mængde.getMængde();
+        }
+        alkoholProcent = alkoholProcent / totalMængde;
+        return alkoholProcent;
     }
 
     public void setDestillation(Destillation destillation) {
