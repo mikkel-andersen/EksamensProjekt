@@ -20,12 +20,12 @@ class LagerTest {
     Påfyldning påfyldning2;
     @BeforeEach
     void setUp() {
-        lager = new Lager(1, 20, "Sall Lager");
+        lager = new Lager(1,20, "Sall Lager");
         lager2 = new Lager(2, 1, "Sall Lager2");
         medarbejder = new Medarbejder("Jens");
         destillation = medarbejder.opretDestillation(LocalDate.of(2023,11,30), LocalDate.of(2023,12,1), "Fire", "Byg", 300, 10);
-        fad = new Fad("Spanien", historik, "Sherry", 150,1);
-        fad2 = new Fad("Italien", historik, "Bourbon", 150,2);
+        fad = new Fad("Spanien", "Sherry", 150,1);
+        fad2 = new Fad("Italien", "Bourbon", 150,2);
         påfyldning = fad.opretPåfyldning(LocalDate.of(2023,11,30), 150, destillation);
         påfyldning2 = fad2.opretPåfyldning(LocalDate.of(2023,11,30), 150, destillation);
     }

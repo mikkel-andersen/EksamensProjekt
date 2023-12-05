@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Whisky {
     private LocalDate aftapningsDato;
-    private int antalLiter;
+    private double antalLiter;
     private double alkoholProcent;
     private String navn;
     private String beskrivelse;
@@ -14,13 +14,11 @@ public class Whisky {
     private ArrayList<Fad> fadListe = new ArrayList<>();
 
 
-    public Whisky(LocalDate aftapningsDato, int antalLiter, double alkoholProcent, String navn, String beskrivelse, String type) {
+    public Whisky(LocalDate aftapningsDato, double antalLiter, double alkoholProcent, ArrayList<Fad> fadListe) {
         this.aftapningsDato = aftapningsDato;
         this.antalLiter = antalLiter;
         this.alkoholProcent = alkoholProcent;
-        this.navn = navn;
-        this.beskrivelse = beskrivelse;
-        this.type = type;
+        this.fadListe = fadListe;
     }
 
     public LocalDate getAftapningsDato() {
@@ -31,7 +29,7 @@ public class Whisky {
         this.aftapningsDato = aftapningsDato;
     }
 
-    public int getAntalLiter() {
+    public double getAntalLiter() {
         return antalLiter;
     }
 

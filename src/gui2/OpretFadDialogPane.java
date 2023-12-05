@@ -1,10 +1,7 @@
 package gui2;
 
 import controller.Controller;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import model.Fad;
 
@@ -13,8 +10,7 @@ import java.util.ArrayList;
 public class OpretFadDialogPane extends Dialog<Fad> {
 
     private TextField oprindelsesLandField = new TextField();
-    private TextField destillationerField = new TextField();
-    private TextField fadTypeField = new TextField();
+    private ComboBox fadTypeField = new ComboBox();
     private TextField kapacitetField = new TextField();
     private Controller controller;
 
@@ -30,15 +26,21 @@ public class OpretFadDialogPane extends Dialog<Fad> {
         grid.setHgap(10);
         grid.setVgap(10);
 
+        //ComboBox
+        fadTypeField.getItems().addAll(
+                "Sherry",
+                "Bourbon",
+                "Rødvin"
+        );
+
+
         // Add labels and input fields to the GridPane
         grid.add(new Label("OprindelsesLand:"), 0, 0);
-        grid.add(new Label("Destillationer:"), 0, 1);
-        grid.add(new Label("FadType:"), 0, 2);
-        grid.add(new Label("Kapacitet:"), 0, 3);
+        grid.add(new Label("FadType:"), 0, 1);
+        grid.add(new Label("Kapacitet:"), 0, 2);
         grid.add(oprindelsesLandField, 1, 0);
-        grid.add(destillationerField, 1, 1);
-        grid.add(fadTypeField, 1, 2);
-        grid.add(kapacitetField, 1, 3);
+        grid.add(fadTypeField, 1, 1);
+        grid.add(kapacitetField, 1, 2);
 
         // Add more labels and fields as needed
 
@@ -49,11 +51,11 @@ public class OpretFadDialogPane extends Dialog<Fad> {
         this.setResultConverter(dialogButton -> {
             if (dialogButton == ButtonType.OK) {
                 // Validate input and create a new Fad
-                String fadType = fadTypeField.getText();
+                String fadType = fadTypeField.getValue().toString();
                 int kapacitet = Integer.parseInt(kapacitetField.getText());
 
                 // Validate input and create a new Fad
-                Fad createdFad = controller.opretFad(oprindelsesLandField.getText(), new ArrayList<>(), fadType, kapacitet);
+                Fad createdFad = controller.opretFad(oprindelsesLandField.getText(), fadType, kapacitet);
 
                 return createdFad;
             }

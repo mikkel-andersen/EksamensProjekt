@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class Lager {
         fad.setLager(this);
         antalFad++;
     }
+
 
     public void removeFad(Fad fad) {
         fadliste.remove(fad);
