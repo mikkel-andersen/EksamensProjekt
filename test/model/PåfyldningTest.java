@@ -66,7 +66,19 @@ class PåfyldningTest {
         assertEquals(destillation.getMaltBatch(), whisky.getPåfyldninger().get(0).getDestillationer().get(0).getMaltBatch());
         assertEquals(destillation.getKornSort(), whisky.getPåfyldninger().get(0).getDestillationer().get(0).getKornSort());
         assertEquals(destillation.getVaeskeILiter(), whisky.getPåfyldninger().get(0).getDestillationer().get(0).getVaeskeILiter());
+    }
 
+    @Test
+    void aftapFad_Test_Fad_Ikke_Whisky() {
+        // Arrange
+        Påfyldning påfyldning = new Påfyldning(LocalDate.of(2022,12,1), fad, lager, mængder);
+        // Act
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Whisky whisky = påfyldning.aftapFad(LocalDate.of(2023,12,1));
+        });
+        // Assert
+        assertEquals("Fadet er ikke gammelt nok til at blive til whisky", exception.getMessage());
+        assertFalse(fad.getIsWhisky());
 
     }
 }
