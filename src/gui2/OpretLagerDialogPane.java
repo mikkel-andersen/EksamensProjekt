@@ -4,6 +4,7 @@ import com.sun.source.doctree.TextTree;
 import controller.Controller;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import model.Fad;
 import model.Lager;
 
 public class OpretLagerDialogPane extends Dialog<Lager>{
