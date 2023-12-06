@@ -9,8 +9,10 @@ import javafx.scene.layout.GridPane;
 import model.Destillation;
 import model.Fad;
 import javafx.scene.layout.HBox;
+import model.Lager;
 
 public class OpretFadOgDestillationerPane extends GridPane{
+    private OpretPåfyldningDialogPane opretPåfyldningDialogPane;
     private OpretOgVisLagerPane opretOgVisLagerPane;
     private SharedListView<Fad> lstFad = new SharedListView<>();
     private ListView<Destillation> lstDestillation = new ListView<>();
@@ -45,6 +47,7 @@ public class OpretFadOgDestillationerPane extends GridPane{
         this.add(hBox2, 1, 0);
         this.add(lstDestillation, 1, 1);
         this.add(btnOpretDestillation, 3, 1);
+        this.add(btnOpretPåfyldning, 4, 1);
 
 
 
@@ -53,6 +56,9 @@ public class OpretFadOgDestillationerPane extends GridPane{
 
         btnOpretFad.setOnAction(event -> openCreateFadDialog());
         btnOpretDestillation.setOnAction(event -> openCreateDestillationDialog());
+
+        btnOpretPåfyldning.setOnAction(event -> openCreatePåfyldningDialog());
+        
 
     }
 
@@ -79,6 +85,20 @@ public class OpretFadOgDestillationerPane extends GridPane{
                 controller.getStorage().addDestillation(createdDestillation);
                 // Update the ListView or any other UI components
                 lstDestillation.getItems().setAll(controller.getDestillationer());
+            }
+        });
+    }
+
+    private void openCreatePåfyldningDialog() {
+        OpretPåfyldningDialogPane createPåfyldningDialog = new OpretPåfyldningDialogPane(controller);
+        createPåfyldningDialog.showAndWait().ifPresent(createdPåfyldning -> {
+            // Obtain the relevant Fad object from the dialog
+            Fad selectedFad = createPåfyldningDialog.selectedFad();
+            Lager selectedLager = createPåfyldningDialog.selectedLager();
+
+            // Add påfyldning to the relevant Fad
+            if (createdPåfyldning != null && selectedFad != null) {
+                controller.opretPåfyldning(createdPåfyldning.getPaafyldningsDato(), selectedFad, selectedLager, createdPåfyldning.getMængder());
             }
         });
     }

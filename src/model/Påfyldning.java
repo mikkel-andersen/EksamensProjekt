@@ -121,8 +121,3 @@ public class Påfyldning {
         return fad;
     }
 }
-
-    public void setLiter(int liter) {
-        this.liter = liter;
-    }
-}

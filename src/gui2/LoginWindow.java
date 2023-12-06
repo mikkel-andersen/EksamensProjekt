@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -32,12 +33,16 @@ public class LoginWindow extends Application {
         stage.setHeight(600);
         stage.setWidth(600);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     private void initLoginContent() {
 
         Image image = new Image("gui2/SallLogo.png");
-
+        Image image2 = new Image("gui2/Baggrund.jpeg");
+        BackgroundImage myBI= new BackgroundImage(image2,
+                null, null, null, null);
+        loginPane.setBackground(new javafx.scene.layout.Background(myBI));
         ImageView imageView = new ImageView(image);
 
         imageView.fitWidthProperty();

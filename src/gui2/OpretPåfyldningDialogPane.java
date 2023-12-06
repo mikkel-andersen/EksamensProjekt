@@ -6,6 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import model.Lager;
 import model.Påfyldning;
 import controller.Controller;
 import javafx.scene.control.*;
@@ -16,7 +17,7 @@ import java.awt.*;
 
 public class OpretPåfyldningDialogPane extends Dialog<Påfyldning> {
 
-
+    OpretFadOgDestillationerPane opretFadOgDestillationerPane;
     private ComboBox fadListeField = new ComboBox();
     private DatePicker påfyldningsDatoField = new DatePicker();
     private ComboBox lagerField = new ComboBox();
@@ -50,12 +51,18 @@ public class OpretPåfyldningDialogPane extends Dialog<Påfyldning> {
 
         this.setResultConverter((ButtonType button) -> {
             if (button == ButtonType.OK) {
-                Påfyldning påfyldning = new Påfyldning();
-                påfyldning.påfyldFad(påfyldningsDatoField.getValue(), (Fad) fadListeField.getValue(), (model.Lager) lagerField.getValue());
-                return påfyldning;
+                return controller.opretPåfyldning(påfyldningsDatoField.getValue(),(Fad) fadListeField.getSelectionModel().getSelectedItem(), (model.Lager) lagerField.getSelectionModel().getSelectedItem(), null);
             }
             return null;
         });
 
+    }
+
+    public Fad selectedFad(){
+        return (Fad) fadListeField.getSelectionModel().getSelectedItem();
+    }
+
+    public Lager selectedLager(){
+        return (Lager) lagerField.getSelectionModel().getSelectedItem();
     }
 }
