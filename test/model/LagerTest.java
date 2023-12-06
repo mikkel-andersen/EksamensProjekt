@@ -16,8 +16,7 @@ class LagerTest {
     private Fad fad2;
     private Destillation destillation;
     Medarbejder medarbejder;
-    Påfyldning påfyldning;
-    Påfyldning påfyldning2;
+
     @BeforeEach
     void setUp() {
         lager = new Lager(1,20, "Sall Lager");

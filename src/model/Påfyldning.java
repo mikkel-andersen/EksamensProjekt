@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@SuppressWarnings("NonAsciiCharacters")
+
 public class Påfyldning {
 
     private LocalDate paafyldningsDato;
@@ -27,11 +27,11 @@ public class Påfyldning {
         }
         this.paafyldningsDato = paafyldningsDato;
         this.fad = fad;
-        fad.setCounter(fad.getCounter() + 1);
+        fad.addPåfyldning(this);
+        fad.setCounter(fad.getCounter());
         fad.setLager(lager);
         lager.addFad(fad);
     }
-
 
     public Mængde opretMængde(double mængde, Destillation destillation) {
         Mængde m = new Mængde(mængde, destillation);
@@ -39,7 +39,6 @@ public class Påfyldning {
         mængder.add(m);
         return m;
     }
-
 
     public LocalDate getPaafyldningsDato() {
         return paafyldningsDato;
@@ -61,10 +60,6 @@ public class Påfyldning {
         return destillationer;
     }
 
-    @Override
-    public String toString() {
-        return "liter d. " + getPaafyldningsDato();
-    }
 
     public void setWhisky(Whisky whisky) {
         if (this.whisky == null) {
@@ -75,9 +70,6 @@ public class Påfyldning {
 
     }
 
-    public void setPaafyldningsDato(LocalDate paafyldningsDato) {
-        this.paafyldningsDato = paafyldningsDato;
-    }
 
     public ArrayList<Mængde> getMængder() {
         return mængder;
@@ -91,12 +83,12 @@ public class Påfyldning {
             totalMængde += mængde.getMængde();
         }
         alkoholProcent = alkoholProcent / totalMængde;
-        return alkoholProcent;
+        return alkoholProcent * 100;
     }
 
-    public boolean erWhisky() {
-        fad.erWhisky();
-        return fad.isWhisky();
+    public boolean erWhisky(LocalDate dato) {
+        fad.erWhisky(dato);
+        return fad.getIsWhisky();
     }
 
 
@@ -106,7 +98,7 @@ public class Påfyldning {
         double antalLiter = getLiter();
         LocalDate aftapningsDato = dato;
 
-        if (erWhisky()) {
+        if (erWhisky(aftapningsDato)) {
             Whisky whisky;
             whisky = new Whisky(aftapningsDato, antalLiter, alkoholProcent);
             setWhisky(whisky);

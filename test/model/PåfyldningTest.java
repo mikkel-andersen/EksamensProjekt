@@ -28,10 +28,11 @@ class PåfyldningTest {
         fad = new Fad("Spanien", "Bourbon", 140,1);
         lager = new Lager(1, 100, "Lager1");
         mængder = new ArrayList<>(List.of(new Mængde(100, destillation), new Mængde(40, destillation)));
-        Påfyldning påfyldning = new Påfyldning(LocalDate.of(2017,12,1), fad, lager, mængder);
 
 
     }
+
+
 
 
 
@@ -43,19 +44,29 @@ class PåfyldningTest {
         // Assert
         assertEquals(2, påfyldning.getDestillationer().size());
         assertEquals(140, påfyldning.getLiter());
-        assertEquals(1, fad.getCounter());
+        assertEquals(0, fad.getCounter());
         assertEquals(lager, fad.getLager());
         assertEquals(1, fad.getLager().getFadliste().size());
-
-
+        assertEquals(53.5, påfyldning.udregnAlkoholProcent());
 
     }
 
-    @Test
-    void udregnAlkoholProcent() {
-    }
 
     @Test
-    void aftapFad() {
+    void aftapFad_Test_Korrekte_Inputs() {
+        // Arrange
+        Påfyldning påfyldning = new Påfyldning(LocalDate.of(2019,12,1), fad, lager, mængder);
+        // Act
+        Whisky whisky = påfyldning.aftapFad(LocalDate.of(2023,12,1));
+        // Assert
+        assertEquals(140, whisky.getAntalLiter());
+        assertEquals(53.5, whisky.getAlkoholProcent());
+        assertEquals(LocalDate.of(2023,12,1), whisky.getAftapningsDato());
+        assertEquals(200, whisky.udregnAntalFlasker());
+        assertEquals(destillation.getMaltBatch(), whisky.getPåfyldninger().get(0).getDestillationer().get(0).getMaltBatch());
+        assertEquals(destillation.getKornSort(), whisky.getPåfyldninger().get(0).getDestillationer().get(0).getKornSort());
+        assertEquals(destillation.getVaeskeILiter(), whisky.getPåfyldninger().get(0).getDestillationer().get(0).getVaeskeILiter());
+
+
     }
 }

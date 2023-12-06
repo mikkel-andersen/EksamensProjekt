@@ -20,6 +20,10 @@ public class Whisky {
 
     }
 
+    public double getAntalLiter() {
+        return antalLiter;
+    }
+
     public LocalDate getAftapningsDato() {
         return aftapningsDato;
     }
@@ -36,12 +40,13 @@ public class Whisky {
                 totalMængde += m.getMængde();
             }
         }
-        this.alkoholProcent = alkoholProcent / totalMængde;
+        this.alkoholProcent = (alkoholProcent / totalMængde) * 100;
     }
 
     public void addPåfyldning(Påfyldning påfyldning) {
-        if (påfyldning.erWhisky() && !påfyldninger.contains(påfyldning)) {
+        if (påfyldning.erWhisky(aftapningsDato) && !påfyldninger.contains(påfyldning)) {
             påfyldninger.add(påfyldning);
+            setType();
         } else {
             throw new IllegalArgumentException("Påfyldning er ikke whisky eller er allerede tilføjet");
         }
@@ -66,6 +71,10 @@ public class Whisky {
         } else if (påfyldninger.size() > 1){
             type = "Single Malt";
         }
+    }
+
+    public ArrayList<Påfyldning> getPåfyldninger() {
+        return påfyldninger;
     }
 
     public String whiskyLabel() {

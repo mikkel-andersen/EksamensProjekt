@@ -28,13 +28,6 @@ public class Fad {
         return fadType;
     }
 
-    public void setFadType(String fadType) {
-        this.fadType = fadType;
-    }
-
-    public void setWhisky(boolean whisky) {
-        this.whisky = whisky;
-    }
     public void setLager(Lager lager) {
         this.lager = lager;
     }
@@ -48,15 +41,15 @@ public class Fad {
         return id;
     }
 
-    public void erWhisky() {
-        if (ChronoUnit.YEARS.between(LocalDate.now(), påfyldninger[counter].getPaafyldningsDato()) >= 3) {
-            whisky = true;
+    public void erWhisky(LocalDate dato) {
+        if (ChronoUnit.YEARS.between(påfyldninger[this.counter].getPaafyldningsDato(), dato) >= 3) {
+            this.whisky = true;
         } else {
-            whisky = false;
+            this.whisky = false;
         }
     }
 
-    public boolean isWhisky() {
+    public boolean getIsWhisky() {
         return whisky;
     }
 
@@ -72,14 +65,15 @@ public class Fad {
         return oprindelsesLand;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
     public void setCounter(int counter) {
         this.counter = counter;
     }
     public int getCounter() {
         return counter;
+    }
+    public void addPåfyldning(Påfyldning påfyldning) {
+        påfyldninger[counter] = påfyldning;
     }
 
 
