@@ -63,25 +63,6 @@ public class Fad {
     public Påfyldning[] getPåfyldninger() {
         return påfyldninger;
     }
-    //TODO: Er denne metode relevant, hvis vi gør det igennem controlleren / påfyldning?
-//    public Påfyldning opretPåfyldning(LocalDate dato, ArrayList<Mængde> mængder, Fad fad, Lager lager) {
-//        double antalLiter = 0;
-//        for (Mængde mængde : mængder) {
-//            antalLiter += mængde.getMængde();
-//        }
-//        if (antalLiter > kapacitetILiter) {
-//            throw new IllegalArgumentException("Antal liter er større end fadets størrelse");
-//        } else if (dato == null || antalLiter == 0) {
-//            throw new IllegalArgumentException("En eller flere parametre null eller 0");
-//        } else if (antalLiter + antalLiterPaafyldt > kapacitetILiter) {
-//            throw new IllegalArgumentException("Antal liter overstiger fadets størrelse");
-//        } else {
-//            Påfyldning påfyldning = new Påfyldning(dato, fad, lager);
-//            påfyldninger.add(påfyldning);
-//            return påfyldning;
-//        }
-//    }
-
 
     public Lager getLager() {
         return lager;
@@ -89,14 +70,6 @@ public class Fad {
 
     public String getOprindelsesLand() {
         return oprindelsesLand;
-    }
-
-    public void setOprindelsesLand(String oprindelsesLand) {
-        this.oprindelsesLand = oprindelsesLand;
-    }
-
-    public void setKapacitetILiter(int kapacitetILiter) {
-        this.kapacitetILiter = kapacitetILiter;
     }
 
     public void setId(int id) {
@@ -108,6 +81,7 @@ public class Fad {
     public int getCounter() {
         return counter;
     }
+
 
     @Override
     public String toString() {

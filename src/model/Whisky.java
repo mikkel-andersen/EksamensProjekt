@@ -5,13 +5,11 @@ import java.util.ArrayList;
 
 public class Whisky {
     private LocalDate aftapningsDato;
-    private int counter = 0;
+    private ArrayList<Påfyldning> påfyldninger = new ArrayList<>();
     private double antalLiter;
     private double alkoholProcent;
-    private String navn;
-    private String beskrivelse;
     private String type;
-    private boolean fortyndet;
+
 
 
 
@@ -25,45 +23,72 @@ public class Whisky {
     public LocalDate getAftapningsDato() {
         return aftapningsDato;
     }
-
-    public void setAftapningsDato(LocalDate aftapningsDato) {
-        this.aftapningsDato = aftapningsDato;
-    }
-
-    public double getAntalLiter() {
-        return antalLiter;
-    }
-
-    public void setAntalLiter(int antalLiter) {
-        this.antalLiter = antalLiter;
-    }
-
     public double getAlkoholProcent() {
         return alkoholProcent;
     }
 
-    public void setAlkoholProcent(double alkoholProcent) {
-        this.alkoholProcent = alkoholProcent;
+    public void opdaterAlkoholProcent() {
+        double alkoholProcent = 0.0;
+        double totalMængde = 0.0;
+        for (Påfyldning p : påfyldninger) {
+            for (Mængde m : p.getMængder()) {
+                alkoholProcent += m.getMængde() * (m.getDestillation().getAlkoholProcent() / 100);
+                totalMængde += m.getMængde();
+            }
+        }
+        this.alkoholProcent = alkoholProcent / totalMængde;
     }
 
-    public String getNavn() {
-        return navn;
+    public void addPåfyldning(Påfyldning påfyldning) {
+        if (påfyldning.erWhisky() && !påfyldninger.contains(påfyldning)) {
+            påfyldninger.add(påfyldning);
+        } else {
+            throw new IllegalArgumentException("Påfyldning er ikke whisky eller er allerede tilføjet");
+        }
+
+        double liter = 0;
+        for (Påfyldning p : påfyldninger) {
+            liter += p.getLiter();
+        }
+        this.antalLiter = liter;
+        opdaterAlkoholProcent();
     }
 
-    public void setNavn(String navn) {
-        this.navn = navn;
+    public int udregnAntalFlasker() {
+        int antalFlasker = 0;
+        antalFlasker = (int) (antalLiter / 0.7);
+        return antalFlasker;
     }
 
-    public String getBeskrivelse() {
-        return beskrivelse;
+    public void setType() {
+        if (påfyldninger.size() == 1) {
+            type = "Single Cask";
+        } else if (påfyldninger.size() > 1){
+            type = "Single Malt";
+        }
     }
 
-    public void setBeskrivelse(String beskrivelse) {
-        this.beskrivelse = beskrivelse;
-    }
+    public String whiskyLabel() {
 
-    public String getType() {
-        return type;
+        String label = "";
+        if (påfyldninger.size() == 1) {
+            label += "Flaske x af: " + udregnAntalFlasker() + "\n";
+            label += type + "\n";
+            label += "Aftappet d. " + getAftapningsDato() + "\n";
+            label += "Fadtype: " + påfyldninger.get(0).getFad().getFadType() + "\n";
+            label += "Oprindelsesland: " + påfyldninger.get(0).getFad().getOprindelsesLand() + "\n";
+            label += "Maltbatch: " + påfyldninger.get(0).getDestillationer().get(0).getMaltBatch() + "\n";
+            label += "Kornsort: " + påfyldninger.get(0).getDestillationer().get(0).getKornSort() + "\n";
+            label += "Alkoholprocent: " + getAlkoholProcent() + "% - 70 cl \n";
+            label += "Destilleret af: " + påfyldninger.get(0).getDestillationer().get(0).getMedarbejder().getNavn() + "\n";
+        } else if (påfyldninger.size() > 1) {
+            label += "Flaske x af: " + udregnAntalFlasker() + "\n";
+            label += type + "\n";
+            label += "Aftappet d. " + getAftapningsDato() + "\n";
+
+            label += "Har: " + påfyldninger.get(0).getFad().getFadType() + "\n";
+        }
+        return label;
     }
 
 

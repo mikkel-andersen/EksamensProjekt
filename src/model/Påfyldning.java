@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,19 @@ import java.util.List;
 public class Påfyldning {
 
     private LocalDate paafyldningsDato;
+    private Whisky whisky = null;
     private ArrayList<Mængde> mængder = new ArrayList<>();
     private Fad fad;
 
-    public Påfyldning(LocalDate paafyldningsDato, Fad fad, Lager lager) {
+    public Påfyldning() {
+        //Tom constructor, da der først skal tilføjes mængder
+        //Datoen tilføjes når et fad påfyldes
+    }
+
+    public void påfyldFad(LocalDate paafyldningsDato, Fad fad, Lager lager) {
+        if (fad.getCounter() >= 3) {
+            throw new IllegalArgumentException("Fadet kan ikke bruges længere");
+        }
         this.paafyldningsDato = paafyldningsDato;
         this.fad = fad;
         fad.setCounter(fad.getCounter() + 1);
@@ -51,8 +61,21 @@ public class Påfyldning {
         return "liter d. " + getPaafyldningsDato();
     }
 
+    public void setWhisky(Whisky whisky) {
+        if (this.whisky == null) {
+            this.whisky = whisky;
+        } else {
+            throw new IllegalArgumentException("Whisky er allerede oprettet med denne påfyldning");
+        }
+
+    }
+
     public void setPaafyldningsDato(LocalDate paafyldningsDato) {
         this.paafyldningsDato = paafyldningsDato;
+    }
+
+    public ArrayList<Mængde> getMængder() {
+        return mængder;
     }
 
     public double udregnAlkoholProcent() {
@@ -66,8 +89,31 @@ public class Påfyldning {
         return alkoholProcent;
     }
 
-    public void setDestillation(Destillation destillation) {
-        this.destillation = destillation;
+    public boolean erWhisky() {
+        fad.erWhisky();
+        return fad.isWhisky();
+    }
+
+
+
+    public Whisky aftapFad(LocalDate dato) {
+        double alkoholProcent = udregnAlkoholProcent();
+        double antalLiter = getLiter();
+        LocalDate aftapningsDato = dato;
+
+        if (erWhisky()) {
+            Whisky whisky;
+            whisky = new Whisky(aftapningsDato, antalLiter, alkoholProcent);
+            setWhisky(whisky);
+            whisky.addPåfyldning(this);
+        } else {
+            throw new IllegalArgumentException("Fadet er ikke gammelt nok til at blive til whisky");
+        }
+            return whisky;
+    }
+
+    public Fad getFad() {
+        return fad;
     }
 }
 
