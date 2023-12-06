@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Whisky {
     private LocalDate aftapningsDato;
+    private int counter = 0;
     private double antalLiter;
     private double alkoholProcent;
     private String navn;
@@ -64,6 +65,7 @@ public class Whisky {
     public String getType() {
         return type;
     }
+
 
 
 

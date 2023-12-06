@@ -39,11 +39,11 @@ public class Controller {
         storage.addLager(lager);
         return lager;
     }
-
-    public Påfyldning opretPåfyldning(LocalDate dato, ArrayList<Mængde> mængder, Fad fad) {
-        Påfyldning påfyldning = fad.opretPåfyldning(dato, mængder, fad);
-        return påfyldning;
-    }
+    //TODO: ÆNDRE I NEDENSTÅENDE KODE SÅ DET PASSER
+  //  public Påfyldning opretPåfyldning(LocalDate dato, ArrayList<Mængde> mængder, Fad fad) {
+  //      Påfyldning påfyldning = fad.opretPåfyldning(dato, fad);
+   //     return påfyldning;
+   // }
 
     public Fad opretFad(String oprindelsesLand, String fadType, int kapacitet) {
         int nytID = storage.getFadListe().size() + 1;
