@@ -45,7 +45,10 @@ public class Controller {
         return påfyldning;
     }
 
-
+    public Mængde opretMængde(double mængde, Destillation destillation) {
+        Mængde m = new Mængde(mængde, destillation);
+        return m;
+    }
 
     public Fad opretFad(String oprindelsesLand, String fadType, int kapacitet) {
         int nytID = storage.getFadListe().size() + 1;

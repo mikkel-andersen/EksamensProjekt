@@ -81,13 +81,6 @@ public class Whisky {
             label += "Kornsort: " + påfyldninger.get(0).getDestillationer().get(0).getKornSort() + "\n";
             label += "Alkoholprocent: " + getAlkoholProcent() + "% - 70 cl \n";
             label += "Destilleret af: " + påfyldninger.get(0).getDestillationer().get(0).getMedarbejder().getNavn() + "\n";
-        } else if (påfyldninger.size() > 1) {
-            label += "Flaske x af: " + udregnAntalFlasker() + "\n";
-            label += type + "\n";
-            label += "Aftappet d. " + getAftapningsDato() + "\n";
-
-            label += "Har: " + påfyldninger.get(0).getFad().getFadType() + "\n";
-        }
         return label;
     }
 

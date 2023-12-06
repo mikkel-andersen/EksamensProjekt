@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("NonAsciiCharacters")
+
 public class Påfyldning {
 
     private LocalDate paafyldningsDato;
