@@ -12,6 +12,7 @@ public class Fad {
     private Påfyldning[] påfyldninger = new Påfyldning[3];
     private Lager lager = null;
     private int kapacitetILiter;
+    //TODO: Find ud af hvordan vi opdaterer counteren
     private int counter = 0;
     private int id;
     private boolean whisky;
