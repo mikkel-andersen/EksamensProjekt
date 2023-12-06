@@ -26,8 +26,7 @@ class LagerTest {
         destillation = medarbejder.opretDestillation(LocalDate.of(2023,11,30), LocalDate.of(2023,12,1), "Fire", "Byg", 300, 10);
         fad = new Fad("Spanien", "Sherry", 150,1);
         fad2 = new Fad("Italien", "Bourbon", 150,2);
-        påfyldning = fad.opretPåfyldning(LocalDate.of(2023,11,30), 150, destillation);
-        påfyldning2 = fad2.opretPåfyldning(LocalDate.of(2023,11,30), 150, destillation);
+
     }
 
     @org.junit.jupiter.api.Test

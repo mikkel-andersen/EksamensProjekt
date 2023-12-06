@@ -40,9 +40,14 @@ public class Controller {
         return lager;
     }
 
-    public Påfyldning opretPåfyldning(LocalDate dato, ArrayList<Mængde> mængder, Fad fad) {
-        Påfyldning påfyldning = fad.opretPåfyldning(dato, mængder, fad);
+    public Påfyldning opretPåfyldning() {
+        Påfyldning påfyldning = new Påfyldning();
         return påfyldning;
+    }
+
+    public Mængde opretMængde(double mængde, Destillation destillation) {
+        Mængde m = new Mængde(mængde, destillation);
+        return m;
     }
 
     public Fad opretFad(String oprindelsesLand, String fadType, int kapacitet) {
