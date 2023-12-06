@@ -17,6 +17,7 @@ public class OpretFadOgDestillationerPane extends GridPane{
     private Controller controller;
     private Button btnOpretFad = new Button("Opret Fad");
     private Button btnOpretDestillation = new Button("Opret Destillation");
+    private Button btnOpretPåfyldning = new Button("Opret Påfyldning");
     private Label lblFad = new Label("Fade");
     private Label lblDestillation = new Label("Destillationer");
 
