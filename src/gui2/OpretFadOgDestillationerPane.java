@@ -36,6 +36,7 @@ public class OpretFadOgDestillationerPane extends GridPane{
         this.setHgap(20);
         this.setVgap(10);
 
+
         HBox hBox = new HBox(lblFad);
         hBox.setAlignment(Pos.CENTER);
         HBox hBox2 = new HBox(lblDestillation);
@@ -58,7 +59,7 @@ public class OpretFadOgDestillationerPane extends GridPane{
         btnOpretDestillation.setOnAction(event -> openCreateDestillationDialog());
 
         btnOpretPåfyldning.setOnAction(event -> openCreatePåfyldningDialog());
-        
+
 
     }
 
