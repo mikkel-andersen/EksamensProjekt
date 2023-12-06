@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+@SuppressWarnings("NonAsciiCharacters")
 public class Påfyldning {
 
     private LocalDate paafyldningsDato;
@@ -13,20 +14,24 @@ public class Påfyldning {
     private ArrayList<Mængde> mængder = new ArrayList<>();
     private Fad fad;
 
-    public Påfyldning() {
-        //Tom constructor, da der først skal tilføjes mængder
-        //Datoen tilføjes når et fad påfyldes
-    }
-
-    public void påfyldFad(LocalDate paafyldningsDato, Fad fad, Lager lager) {
+    public Påfyldning(LocalDate paafyldningsDato, Fad fad, Lager lager, ArrayList<Mængde> mængder) {
+        this.mængder = mængder;
         if (fad.getCounter() >= 3) {
             throw new IllegalArgumentException("Fadet kan ikke bruges længere");
+        } else if (getLiter() > fad.getKapacitetILiter()) {
+            throw new IllegalArgumentException("Der kan ikke fyldes så meget på fadet");
+        } else if (fad.getLager() != null && fad.getLager() != lager) {
+            throw new IllegalArgumentException("Fadet er allerede på et andet lager");
+        } else if (fad.getLager() == lager) {
+            throw new IllegalArgumentException("Fadet er allerede på dette lager");
         }
         this.paafyldningsDato = paafyldningsDato;
         this.fad = fad;
         fad.setCounter(fad.getCounter() + 1);
         fad.setLager(lager);
+        lager.addFad(fad);
     }
+
 
     public Mængde opretMængde(double mængde, Destillation destillation) {
         Mængde m = new Mængde(mængde, destillation);

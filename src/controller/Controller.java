@@ -40,8 +40,8 @@ public class Controller {
         return lager;
     }
 
-    public Påfyldning opretPåfyldning() {
-        Påfyldning påfyldning = new Påfyldning();
+    public Påfyldning opretPåfyldning(LocalDate paafyldningsDato, Fad fad, Lager lager, ArrayList<Mængde> mængder) {
+        Påfyldning påfyldning = new Påfyldning(paafyldningsDato, fad, lager, mængder);
         return påfyldning;
     }
 
