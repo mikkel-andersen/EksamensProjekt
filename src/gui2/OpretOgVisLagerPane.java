@@ -9,8 +9,9 @@ import model.Lager;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-public class OpretOgVisLagerPane extends GridPane  {
+public class OpretOgVisLagerPane extends GridPane{
 
+    private OpretFadOgDestillationerPane opretFadOgDestillationerPane;
     private ListView<Lager> lstLager = new ListView<>();
     private SharedListView<Fad> lstFad = new SharedListView<>();
     private Controller controller;
@@ -19,7 +20,6 @@ public class OpretOgVisLagerPane extends GridPane  {
 
     public void updateControls() {
         lstLager.getSelectionModel().clearSelection();
-        lstFad.getItems().setAll(controller.getFadListe());
     }
 
     public OpretOgVisLagerPane() {
@@ -32,7 +32,7 @@ public class OpretOgVisLagerPane extends GridPane  {
         this.add(btnOpretLager, 4, 0);
 
         lstLager.getItems().setAll(controller.getLager());
-        lstFad.setItemsAndBind((controller.getFadListe()));
+        lstFad.setItemsAndBind(controller.getFadListe());
 
         btnOpretLager.setOnAction(event -> openCreateLagerDialog());
 
@@ -44,8 +44,11 @@ public class OpretOgVisLagerPane extends GridPane  {
             if (createdLager != null) {
                 controller.getStorage().addLager(createdLager);
                 lstLager.getItems().setAll(controller.getLager());
-                updateControls();
             }
         });
+    }
+
+    public void updateFadList() {
+        lstFad.setItemsAndBind(controller.getFadListe());
     }
 }

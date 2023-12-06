@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 public class StartVindue extends Application {
 
     private Controller controller;
+    private OpretFadOgDestillationerPane opretFadOgDestillationerPane;
+    private OpretOgVisLagerPane opretOgVisLagerPane;
 
     @Override
     public void init() {
@@ -43,11 +45,11 @@ public class StartVindue extends Application {
         Tab tabOpretFad = new Tab("Opret fad og destillationer");
         Tab tabOpretLager = new Tab("Opret & Se Lager");
 
-        OpretFadOgDestillationerPane opretFadOgDestillationerPane = new OpretFadOgDestillationerPane();
-        tabOpretFad.setContent(opretFadOgDestillationerPane);
-
         OpretOgVisLagerPane opretOgVisLagerPane = new OpretOgVisLagerPane();
         tabOpretLager.setContent(opretOgVisLagerPane);
+        OpretFadOgDestillationerPane opretFadOgDestillationerPane = new OpretFadOgDestillationerPane(opretOgVisLagerPane);
+        tabOpretFad.setContent(opretFadOgDestillationerPane);
+
 
         tabPane.getTabs().addAll(tabOpretFad, tabOpretLager);
 

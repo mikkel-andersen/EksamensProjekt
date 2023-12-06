@@ -8,11 +8,9 @@ import model.Fad;
 import model.Lager;
 
 public class OpretLagerDialogPane extends Dialog<Lager>{
-
     private TextField kapacitetField = new TextField();
     private TextField navnField = new TextField();
     private Controller controller;
-
 
     public OpretLagerDialogPane(Controller controller){
         this.setTitle("Opret Lager");

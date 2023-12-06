@@ -13,4 +13,3 @@ import java.util.List;
             setItems(observableList);
         }
     }
-

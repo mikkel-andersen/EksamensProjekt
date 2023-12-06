@@ -16,12 +16,9 @@ public class Påfyldning {
         this.fad = fad;
     }
 
-
-
     public LocalDate getPaafyldningsDato() {
         return paafyldningsDato;
     }
-
 
     @Override
     public String toString() {
@@ -42,6 +39,4 @@ public class Påfyldning {
         alkoholProcent = alkoholProcent / totalMængde;
         return alkoholProcent;
     }
-
-
 }

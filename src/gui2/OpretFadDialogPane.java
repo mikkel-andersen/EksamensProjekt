@@ -6,6 +6,7 @@ import javafx.scene.layout.GridPane;
 import model.Fad;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OpretFadDialogPane extends Dialog<Fad> {
 
@@ -13,6 +14,18 @@ public class OpretFadDialogPane extends Dialog<Fad> {
     private ComboBox fadTypeField = new ComboBox();
     private TextField kapacitetField = new TextField();
     private Controller controller;
+
+    //Update lstFad listView in OpretOgVisLagerPane when a new Fad is created
+
+
+
+    public void updateControls() {
+        oprindelsesLandField.clear();
+        fadTypeField.getSelectionModel().clearSelection();
+        kapacitetField.clear();
+    }
+
+
 
     public OpretFadDialogPane(Controller controller) {
         this.setTitle("Create Fad");
@@ -56,10 +69,11 @@ public class OpretFadDialogPane extends Dialog<Fad> {
 
                 // Validate input and create a new Fad
                 Fad createdFad = controller.opretFad(oprindelsesLandField.getText(), fadType, kapacitet);
-
                 return createdFad;
             }
             return null;
         });
+
+
     }
 }

@@ -5,7 +5,6 @@ public class Mængde {
    private double mængde;
    private Destillation destillation;
 
-
     public Mængde(double mængde, Destillation destillation) {
         this.mængde = mængde;
         this.destillation = destillation;

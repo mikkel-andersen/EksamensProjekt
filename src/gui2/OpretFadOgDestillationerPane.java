@@ -10,7 +10,8 @@ import model.Destillation;
 import model.Fad;
 import javafx.scene.layout.HBox;
 
-public class OpretFadOgDestillationerPane extends GridPane {
+public class OpretFadOgDestillationerPane extends GridPane{
+    private OpretOgVisLagerPane opretOgVisLagerPane;
     private SharedListView<Fad> lstFad = new SharedListView<>();
     private ListView<Destillation> lstDestillation = new ListView<>();
     private Controller controller;
@@ -24,7 +25,8 @@ public class OpretFadOgDestillationerPane extends GridPane {
         lstDestillation.getSelectionModel().clearSelection();
     }
 
-    public OpretFadOgDestillationerPane() {
+    public OpretFadOgDestillationerPane(OpretOgVisLagerPane opretOgVisLagerPane) {
+        this.opretOgVisLagerPane = opretOgVisLagerPane;
         controller = Controller.getController();
 
         this.setGridLinesVisible(false);
@@ -45,7 +47,7 @@ public class OpretFadOgDestillationerPane extends GridPane {
 
 
 
-        lstFad.getItems().setAll(controller.getFadListe());
+        lstFad.setItemsAndBind(controller.getFadListe());
         lstDestillation.getItems().setAll(controller.getDestillationer());
 
         btnOpretFad.setOnAction(event -> openCreateFadDialog());
@@ -53,17 +55,17 @@ public class OpretFadOgDestillationerPane extends GridPane {
 
     }
 
-
     private void openCreateFadDialog() {
         OpretFadDialogPane createFadDialog = new OpretFadDialogPane(controller);
+
         createFadDialog.showAndWait().ifPresent(createdFad -> {
             // Handle the created Fad (e.g., add it to the list)
             if (createdFad != null) {
                 controller.getStorage().addFad(createdFad);
-                // Update the ListView or any other UI components
-                lstFad.getItems().setAll(controller.getFadListe());
-                updateControls();
 
+                opretOgVisLagerPane.updateFadList();
+                // Update the ListView or any other UI components
+                lstFad.setItemsAndBind(controller.getFadListe());
             }
         });
     }
@@ -76,11 +78,7 @@ public class OpretFadOgDestillationerPane extends GridPane {
                 controller.getStorage().addDestillation(createdDestillation);
                 // Update the ListView or any other UI components
                 lstDestillation.getItems().setAll(controller.getDestillationer());
-                updateControls();
             }
         });
     }
-
-
-
 }
