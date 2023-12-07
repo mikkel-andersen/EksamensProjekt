@@ -1,7 +1,9 @@
 package controller;
 
 import model.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import storage.Storage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,12 +11,21 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//TODO: SNAK MED ESBEN OM HVORFOR DE FEJLER NÅR DEN KØRER ALLE TESTS SAMTIDIGT
+//FORDI DET ER KUN ER 1 CONTROLLER SOM HAR DET SAMME STORAGE
+
 class ControllerTest {
+    private Controller controller;
+    private Storage storage;
+    @BeforeEach
+    void setUp() {
+       controller = Controller.getController();
+
+    }
 
     @Test
     void getController() {
-        // Arrange
-        Controller controller = Controller.getController();
+
         // Act
         Controller faktiskResultat = Controller.getController();
         // Assert
@@ -23,26 +34,6 @@ class ControllerTest {
 
 
 
-    @Test
-    void opretDestillation() {
-        // Arrange
-        Controller controller = Controller.getController();
-        Medarbejder medarbejder = new Medarbejder("Hans");
-        // Act
-        Destillation destillation = controller.opretDestillation(LocalDate.of(2023, 11,22),
-                LocalDate.of(2023,11,29), "NP77", "Byg", 100, 57.5, medarbejder);
-        // Assert
-        assertEquals(destillation.getMedarbejder(), medarbejder); // Tjekker om medarbejderen er blevet tilføjet til destillationen
-        assertEquals(57.5, destillation.getAlkoholProcent()); // Tjekker om alkoholprocenten er blevet tilføjet til destillationen
-        assertEquals(100, destillation.getVaeskeILiter()); // Tjekker om væsken er blevet tilføjet til destillationen
-        assertEquals("Byg", destillation.getKornSort()); // Tjekker om kornsorten er blevet tilføjet til destillationen
-        assertEquals("NP77", destillation.getMaltBatch()); // Tjekker om maltbatchen er blevet tilføjet til destillationen
-        assertEquals(LocalDate.of(2023,11,29), destillation.getSlutDato()); // Tjekker om slutdatoen er blevet tilføjet til destillationen
-        assertEquals(LocalDate.of(2023,11,22), destillation.getStartDato()); // Tjekker om startdatoen er blevet tilføjet til destillationen
-        assertEquals(1, Controller.getController().getDestillationer().size()); // Tjekker om destillationen er blevet tilføjet til listen af destillationer
-        assertEquals(destillation, Controller.getController().getDestillationer().get(0)); // Tjekker om destillationen er blevet tilføjet til listen af destillationer
-
-    }
 
     @Test
     void opretLager() {
@@ -115,5 +106,23 @@ class ControllerTest {
         assertEquals(fad, Controller.getController().getFadListe().get(0)); // Tjekker om fadet er blevet tilføjet til listen af fad
     }
 
+    @Test
+    void opretDestillation() {
+        // Arrange
+        Medarbejder medarbejder = new Medarbejder("Hans");
+        // Act
+        Destillation destillation = controller.opretDestillation(LocalDate.of(2023, 11,22),
+                LocalDate.of(2023,11,29), "NP77", "Byg", 100, 57.5, medarbejder);
+        // Assert
+        assertEquals(destillation.getMedarbejder(), medarbejder); // Tjekker om medarbejderen er blevet tilføjet til destillationen
+        assertEquals(57.5, destillation.getAlkoholProcent()); // Tjekker om alkoholprocenten er blevet tilføjet til destillationen
+        assertEquals(100, destillation.getVaeskeILiter()); // Tjekker om væsken er blevet tilføjet til destillationen
+        assertEquals("Byg", destillation.getKornSort()); // Tjekker om kornsorten er blevet tilføjet til destillationen
+        assertEquals("NP77", destillation.getMaltBatch()); // Tjekker om maltbatchen er blevet tilføjet til destillationen
+        assertEquals(LocalDate.of(2023,11,29), destillation.getSlutDato()); // Tjekker om slutdatoen er blevet tilføjet til destillationen
+        assertEquals(LocalDate.of(2023,11,22), destillation.getStartDato()); // Tjekker om startdatoen er blevet tilføjet til destillationen
+        assertEquals(1, Controller.getController().getDestillationer().size()); // Tjekker om destillationen er blevet tilføjet til listen af destillationer
+        assertEquals(destillation, Controller.getController().getDestillationer().get(0)); // Tjekker om destillationen er blevet tilføjet til listen af destillationer
 
+    }
 }
