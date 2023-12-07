@@ -3,11 +3,15 @@ package gui2;
 import controller.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import model.Fad;
 import model.Lager;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+
 
 public class OpretOgVisLagerPane extends GridPane{
 
@@ -16,6 +20,8 @@ public class OpretOgVisLagerPane extends GridPane{
     private SharedListView<Fad> lstFad = new SharedListView<>();
     private Controller controller;
     private Button btnOpretLager = new Button("Opret Lager");
+    private Label lblLager = new Label("Lager");
+    private Label lblFad = new Label("Fade");
 
 
     public void updateControls() {
@@ -27,9 +33,18 @@ public class OpretOgVisLagerPane extends GridPane{
         this.setGridLinesVisible(false);
         this.setHgap(20);
         this.setVgap(10);
-        this.add(lstLager, 0, 0);
-        this.add(lstFad, 1, 0);
-        this.add(btnOpretLager, 4, 0);
+
+        HBox hBox = new HBox(lblLager);
+        hBox.setAlignment(Pos.CENTER);
+        HBox hBox2 = new HBox(lblFad);
+        hBox2.setAlignment(Pos.CENTER);
+
+
+        this.add(hBox, 0, 0);
+        this.add(lstLager, 0, 1);
+        this.add(hBox2, 1, 0);
+        this.add(lstFad, 1, 1);
+        this.add(btnOpretLager, 4, 1);
 
         lstLager.getItems().setAll(controller.getLager());
         lstFad.setItemsAndBind(controller.getFadListe());

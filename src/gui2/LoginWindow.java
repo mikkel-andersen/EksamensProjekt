@@ -33,7 +33,6 @@ public class LoginWindow extends Application {
         stage.setHeight(600);
         stage.setWidth(600);
         stage.show();
-        stage.setFullScreen(true);
     }
 
     private void initLoginContent() {
