@@ -51,6 +51,8 @@ public class StartVindue extends Application {
         tabOpretFad.setContent(opretFadOgDestillationerPane);
 
 
+
+
         tabPane.getTabs().addAll(tabOpretFad, tabOpretLager);
 
         tabOpretFad.setOnSelectionChanged(event -> opretFadOgDestillationerPane.updateControls());
