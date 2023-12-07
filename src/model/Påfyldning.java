@@ -115,4 +115,8 @@ public class Påfyldning {
     public Fad getFad() {
         return fad;
     }
+
+    public void addMængde(Mængde mængde) {
+        mængder.add(mængde);
+    }
 }

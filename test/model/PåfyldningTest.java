@@ -33,9 +33,6 @@ class PåfyldningTest {
     }
 
 
-
-
-
     @Test
     void opretPåfyldning_test_korrekte_inputs() {
         // Act
