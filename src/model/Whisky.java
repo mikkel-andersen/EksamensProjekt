@@ -73,8 +73,17 @@ public class Whisky {
         }
     }
 
+    public String getType() {
+        return type;
+    }
+
     public ArrayList<Påfyldning> getPåfyldninger() {
         return påfyldninger;
+    }
+
+    public void fortyndWhisky(double ønsketAlkoholProcent) {
+        antalLiter += ((alkoholProcent * antalLiter) - (ønsketAlkoholProcent * antalLiter)) / (ønsketAlkoholProcent);
+        alkoholProcent = ønsketAlkoholProcent;
     }
 
     public String whiskyLabel() {

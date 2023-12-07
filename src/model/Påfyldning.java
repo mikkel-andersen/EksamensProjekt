@@ -27,6 +27,7 @@ public class Påfyldning {
         }
         this.paafyldningsDato = paafyldningsDato;
         this.fad = fad;
+        fad.setPåfyldning(this);
         fad.addPåfyldning(this);
         fad.setCounter(fad.getCounter());
         fad.setLager(lager);
@@ -103,6 +104,8 @@ public class Påfyldning {
             whisky = new Whisky(aftapningsDato, antalLiter, alkoholProcent);
             setWhisky(whisky);
             whisky.addPåfyldning(this);
+            fad.setPåfyldning(null);
+            fad.setCounter(fad.getCounter() + 1);
         } else {
             throw new IllegalArgumentException("Fadet er ikke gammelt nok til at blive til whisky");
         }
