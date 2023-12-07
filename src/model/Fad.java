@@ -9,7 +9,8 @@ public class Fad {
 
     private String oprindelsesLand;
     private String fadType;
-    private Påfyldning[] påfyldninger = new Påfyldning[3];
+    private Påfyldning[] påfyldningerHistorik = new Påfyldning[3];
+    private Påfyldning påfyldning;
     private Lager lager = null;
     private int kapacitetILiter;
     //TODO: Find ud af hvordan vi opdaterer counteren
@@ -43,7 +44,7 @@ public class Fad {
     }
 
     public void erWhisky(LocalDate dato) {
-        if (ChronoUnit.YEARS.between(påfyldninger[this.counter].getPaafyldningsDato(), dato) >= 3) {
+        if (ChronoUnit.YEARS.between(påfyldning.getPaafyldningsDato(), dato) >= 3) {
             this.whisky = true;
         } else {
             this.whisky = false;
@@ -54,8 +55,8 @@ public class Fad {
         return whisky;
     }
 
-    public Påfyldning[] getPåfyldninger() {
-        return påfyldninger;
+    public Påfyldning[] getPåfyldningsHistorik() {
+        return påfyldningerHistorik;
     }
 
     public Lager getLager() {
@@ -74,9 +75,16 @@ public class Fad {
         return counter;
     }
     public void addPåfyldning(Påfyldning påfyldning) {
-        påfyldninger[counter] = påfyldning;
+        påfyldningerHistorik[counter] = påfyldning;
     }
 
+    public Påfyldning getPåfyldning() {
+        return påfyldning;
+    }
+
+    public void setPåfyldning(Påfyldning påfyldning) {
+        this.påfyldning = påfyldning;
+    }
 
     @Override
     public String toString() {
