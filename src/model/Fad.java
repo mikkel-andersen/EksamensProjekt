@@ -66,8 +66,6 @@ public class Fad {
     public String getOprindelsesLand() {
         return oprindelsesLand;
     }
-
-
     public void setCounter(int counter) {
         this.counter = counter;
     }
