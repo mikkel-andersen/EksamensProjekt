@@ -98,9 +98,9 @@ public class OpretFadOgDestillationerPane extends GridPane{
             Lager selectedLager = createPåfyldningDialog.selectedLager();
 
             // Add påfyldning to the relevant Fad
-            if (createdPåfyldning != null && selectedFad != null) {
-                controller.opretPåfyldning(createdPåfyldning.getPaafyldningsDato(), selectedFad, selectedLager, createdPåfyldning.getMængder());
-            }
+//            if (createdPåfyldning != null && selectedFad != null) {
+//                controller.opretPåfyldning(createdPåfyldning.getPaafyldningsDato(), selectedFad, selectedLager, createdPåfyldning.getMængder());
+//            }
         });
     }
 }
