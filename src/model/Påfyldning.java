@@ -30,7 +30,6 @@ public class Påfyldning {
         fad.setPåfyldning(this);
         fad.addPåfyldning(this);
         fad.setCounter(fad.getCounter());
-        fad.setLager(lager);
         lager.addFad(fad);
     }
 
