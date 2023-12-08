@@ -8,6 +8,7 @@ public class Mængde {
     public Mængde(double mængde, Destillation destillation) {
         this.mængde = mængde;
         this.destillation = destillation;
+        destillation.setVaeskeILiter(destillation.getVaeskeILiter() - mængde);
     }
 
     public double getMængde() {
