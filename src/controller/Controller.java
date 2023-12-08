@@ -71,19 +71,19 @@ public class Controller {
     }
 
     public void createSomeObjects() {
-        Medarbejder m1 = new Medarbejder("Hans");
-
-        Destillation d1 = m1.opretDestillation(LocalDate.of(2020,11,30), LocalDate.of(2020,12,1), "NP77", "Byg", 100, 57.5);
-
-        Lager l1 = opretLager("Sall Lager", 100);
-
-        Fad f1 = opretFad("Spanien", "Bourbon", 100);
-
-        ArrayList<Mængde> mængder = new ArrayList<>(List.of(new Mængde(100, d1)));
-
-        Påfyldning p1 = opretPåfyldning(LocalDate.of(2020,12,1), f1, l1, mængder);
-
-        Whisky whisky = p1.aftapFad(LocalDate.of(2023,12,1));
+//        Medarbejder m1 = new Medarbejder("Hans");
+//
+//        Destillation d1 = m1.opretDestillation(LocalDate.of(2020,11,30), LocalDate.of(2020,12,1), "NP77", "Byg", 100, 57.5);
+//
+//        Lager l1 = opretLager("Sall Lager", 100);
+//
+//        Fad f1 = opretFad("Spanien", "Bourbon", 100);
+//
+//        ArrayList<Mængde> mængder = new ArrayList<>(List.of(new Mængde(100, d1)));
+//
+//        Påfyldning p1 = opretPåfyldning(LocalDate.of(2020,12,1), f1, l1, mængder);
+//
+//        Whisky whisky = p1.aftapFad(LocalDate.of(2023,12,1));
 
 
 

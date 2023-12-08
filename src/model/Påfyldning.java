@@ -27,9 +27,8 @@ public class Påfyldning {
         }
         this.paafyldningsDato = paafyldningsDato;
         this.fad = fad;
-        fad.setPåfyldning(this);
-        fad.addPåfyldning(this);
-        fad.setCounter(fad.getCounter());
+        fad.setPåfyldning(this); // Sætter påfyldningen på fadet
+        fad.addPåfyldning(this); // Tilføjer påfyldningen til fadets historik
         lager.addFad(fad);
     }
 

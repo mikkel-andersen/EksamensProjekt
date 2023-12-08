@@ -59,9 +59,9 @@ class WhiskyTest {
         // Act & Assert
         whisky.addPåfyldning(påfyldning2);
         assertEquals(140, whisky.getAntalLiter());
-        assertEquals(56.35714285714285, whisky.getAlkoholProcent()); //Mærkelige decimaler, så derfor er det ikke bare 56.35
+        assertEquals(56.35, whisky.getAlkoholProcent(), 0.01);
         whisky.fortyndWhisky(40);
-        assertEquals(197.24999999999994, whisky.getAntalLiter()); //Mærkelige decimaler, så derfor er det ikke bare 197.25
+        assertEquals(197.25, whisky.getAntalLiter(), 0.01);
         assertEquals(40, whisky.getAlkoholProcent());
 
     }

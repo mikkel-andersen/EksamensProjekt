@@ -43,6 +43,7 @@ class PåfyldningTest {
         assertEquals(140, påfyldning.getLiter());
         assertEquals(0, fad.getCounter());
         assertEquals(lager, fad.getLager());
+        assertEquals(lager.getFadliste().get(0), fad);
         assertEquals(1, fad.getLager().getFadliste().size());
         assertEquals(53.5, påfyldning.udregnAlkoholProcent());
 
