@@ -73,5 +73,9 @@ public class Controller {
     public void createSomeObjects() {
         Medarbejder m1 = new Medarbejder("Hans");
 
-}
+    }
+
+    public void reset() {
+        storage.reset();
+    }
 }

@@ -25,7 +25,7 @@ class WhiskyTest {
     @BeforeEach
     void setUp() {
         medarbejder = new Medarbejder("Jens");
-        destillation = medarbejder.opretDestillation(LocalDate.of(2019,1,1), LocalDate.of(2019,1,3), "NP77", "Rug", 100, 57.5);
+        destillation = medarbejder.opretDestillation(LocalDate.of(2019,1,1), LocalDate.of(2019,1,3), "NP77", "Byg", 100, 57.5);
         destillation2 = medarbejder.opretDestillation(LocalDate.of(2019,1,2), LocalDate.of(2019,1,4), "NP76", "Byg", 40, 53.5);
         mængder = new ArrayList<>(List.of(new Mængde(100, destillation)));
         ArrayList<Mængde> mængder2 = new ArrayList<>(List.of(new Mængde(40, destillation2)));

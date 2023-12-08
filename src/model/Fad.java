@@ -86,6 +86,12 @@ public class Fad {
         this.påfyldning = påfyldning;
     }
 
+    public int getAntalDage() {
+        int antalDage = 0;
+         antalDage = (int) ChronoUnit.DAYS.between(påfyldning.getPaafyldningsDato(), LocalDate.now());
+        return antalDage;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

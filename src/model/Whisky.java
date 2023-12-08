@@ -68,11 +68,28 @@ public class Whisky {
     public void setType() {
         if (påfyldninger.size() == 1) {
             type = "Single Cask";
-        } else if (påfyldninger.size() > 1){
+        } else if (påfyldninger.size() > 1 && isSammeKornsort()) {
             type = "Single Malt";
+        }
+        else{
+            type = "Blended";
         }
     }
 
+    public boolean isSammeKornsort() {
+        if (påfyldninger.isEmpty() || påfyldninger.get(0).getDestillationer().isEmpty()) {
+            return false; // Assuming empty lists mean not the same KornSort
+        }
+        String firstKornsort = påfyldninger.get(0).getDestillationer().get(0).getKornSort();
+        for (Påfyldning p : påfyldninger) {
+            for (Destillation d : p.getDestillationer()) {
+                if (!d.getKornSort().equals(firstKornsort)) {
+                    return false; // Found a different KornSort, return false immediately
+                }
+            }
+        }
+        return true; // All KornSort values were the same
+    }
     public String getType() {
         return type;
     }

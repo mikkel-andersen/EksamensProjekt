@@ -22,7 +22,7 @@ public class Påfyldning {
             throw new IllegalArgumentException("Der kan ikke fyldes så meget på fadet");
         } else if (fad.getLager() != null && fad.getLager() != lager) {
             throw new IllegalArgumentException("Fadet er allerede på et andet lager");
-        } else if (fad.getLager() == lager) {
+        } else if (fad.getLager() == lager && fad.getLager() != null) {
             throw new IllegalArgumentException("Fadet er allerede på dette lager");
         }
         this.paafyldningsDato = paafyldningsDato;
@@ -114,5 +114,9 @@ public class Påfyldning {
 
     public Fad getFad() {
         return fad;
+    }
+
+    public void addMængde(Mængde mængde) {
+        mængder.add(mængde);
     }
 }
