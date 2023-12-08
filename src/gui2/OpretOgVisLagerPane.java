@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.Fad;
 import model.Lager;
@@ -14,7 +15,6 @@ import javafx.scene.layout.HBox;
 
 
 public class OpretOgVisLagerPane extends GridPane{
-
     private OpretFadOgDestillationerPane opretFadOgDestillationerPane;
     private ListView<Lager> lstLager = new ListView<>();
     private SharedListView<Fad> lstFad = new SharedListView<>();
@@ -22,6 +22,8 @@ public class OpretOgVisLagerPane extends GridPane{
     private Button btnOpretLager = new Button("Opret Lager");
     private Label lblLager = new Label("Lager");
     private Label lblFad = new Label("Fade");
+    private Label lblAntalÅr = new Label("Liggetid");
+    private TextField txtAntalÅr = new TextField();
 
 
     public void updateControls() {
@@ -45,13 +47,21 @@ public class OpretOgVisLagerPane extends GridPane{
         this.add(hBox2, 1, 0);
         this.add(lstFad, 1, 1);
         this.add(btnOpretLager, 4, 1);
+        this.add(lblAntalÅr, 2, 1);
+        this.add(txtAntalÅr, 3, 1);
+
 
         lstLager.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 lstFad.setItemsAndBind(newValue.getFadliste());
+
             }
         });
-
+        lstFad.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                txtAntalÅr.setText(String.valueOf(newValue.getAntalDage() + " Dage"));
+            }
+        });
 //        lstLager.getItems().setAll(controller.getLager());
 //        lstFad.setItemsAndBind(controller.getFadListe());
 
