@@ -94,6 +94,29 @@ public class Fad {
 
     @Override
     public String toString() {
-        return "Fad ID: " + getId() + ", OprindelsesLand: " + getOprindelsesLand() + ", Fad Type: " + getFadType();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Fad ID: ").append(getId()).append("\n");
+        stringBuilder.append("OprindelsesLand: ").append(getOprindelsesLand()).append("\n");
+        stringBuilder.append("Fad Type: ").append(getFadType()).append("\n");
+        stringBuilder.append("Kapacitet i Liter: ").append(getKapacitetILiter()).append("\n");
+        stringBuilder.append("Lager: ").append((getLager() != null) ? getLager().toString() : "N/A").append("\n");
+        stringBuilder.append("Whisky: ").append(getIsWhisky()).append("\n");
+        stringBuilder.append("Counter: ").append(getCounter()).append("\n");
+
+        stringBuilder.append("PåfyldningsHistorik:\n");
+        for (Påfyldning påfyldning : getPåfyldningsHistorik()) {
+            if (påfyldning != null) {
+                stringBuilder.append("\t").append(påfyldning.toString()).append("\n");
+            }
+        }
+
+        stringBuilder.append("Nuværende Påfyldning:\n");
+        if (getPåfyldning() != null) {
+            stringBuilder.append("\t").append(getPåfyldning().toString()).append("\n");
+        } else {
+            stringBuilder.append("\tNo current påfyldning\n");
+        }
+
+        return stringBuilder.toString();
     }
 }
