@@ -70,7 +70,7 @@ public class Controller {
         return storage.getLager();
     }
 
-    public void createSomeObjects() {
+    /*public void createSomeObjects() {
 //        Medarbejder m1 = new Medarbejder("Hans");
 //
 //        Destillation d1 = m1.opretDestillation(LocalDate.of(2020,11,30), LocalDate.of(2020,12,1), "NP77", "Byg", 100, 57.5);
@@ -85,9 +85,7 @@ public class Controller {
 //
 //        Whisky whisky = p1.aftapFad(LocalDate.of(2023,12,1));
 
-
-
-    }
+    }*/
 
     public void reset() {
         storage.reset();

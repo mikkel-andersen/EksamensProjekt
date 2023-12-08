@@ -17,7 +17,7 @@ public class StartVindue extends Application {
     @Override
     public void init() {
         controller = Controller.getController();
-        controller.createSomeObjects();
+        //controller.createSomeObjects();
     }
 
     @Override

@@ -55,6 +55,7 @@ public class OpretFadOgDestillationerPane extends GridPane{
         lstFad.setItemsAndBind(controller.getFadListe());
         lstDestillation.getItems().setAll(controller.getDestillationer());
 
+        btnOpretFad.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         btnOpretFad.setOnAction(event -> openCreateFadDialog());
         btnOpretDestillation.setOnAction(event -> openCreateDestillationDialog());
 
@@ -101,6 +102,9 @@ public class OpretFadOgDestillationerPane extends GridPane{
 //            if (createdPåfyldning != null && selectedFad != null) {
 //                controller.opretPåfyldning(createdPåfyldning.getPaafyldningsDato(), selectedFad, selectedLager, createdPåfyldning.getMængder());
 //            }
+
+            updateControls();
+
         });
     }
 }

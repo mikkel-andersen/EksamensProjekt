@@ -46,8 +46,14 @@ public class OpretOgVisLagerPane extends GridPane{
         this.add(lstFad, 1, 1);
         this.add(btnOpretLager, 4, 1);
 
-        lstLager.getItems().setAll(controller.getLager());
-        lstFad.setItemsAndBind(controller.getFadListe());
+        lstLager.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                lstFad.setItemsAndBind(newValue.getFadliste());
+            }
+        });
+
+//        lstLager.getItems().setAll(controller.getLager());
+//        lstFad.setItemsAndBind(controller.getFadListe());
 
         btnOpretLager.setOnAction(event -> openCreateLagerDialog());
 

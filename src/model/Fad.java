@@ -97,24 +97,27 @@ public class Fad {
         stringBuilder.append("OprindelsesLand: ").append(getOprindelsesLand()).append("\n");
         stringBuilder.append("Fad Type: ").append(getFadType()).append("\n");
         stringBuilder.append("Kapacitet i Liter: ").append(getKapacitetILiter()).append("\n");
-        stringBuilder.append("Lager: ").append((getLager() != null) ? getLager().toString() : "N/A").append("\n");
-        stringBuilder.append("Whisky: ").append(getIsWhisky()).append("\n");
-        stringBuilder.append("Counter: ").append(getCounter()).append("\n");
+        stringBuilder.append("Lager: ").append((getLager() != null) ? getLager().getNavn() : "N/A").append("\n");
+        // Append other relevant information about Lager as needed, but avoid calling lager.toString()
 
         stringBuilder.append("PåfyldningsHistorik:\n");
         for (Påfyldning påfyldning : getPåfyldningsHistorik()) {
             if (påfyldning != null) {
-                stringBuilder.append("\t").append(påfyldning.toString()).append("\n");
+                stringBuilder.append("\t").append("Påfyldning Dato: ").append(påfyldning.getPaafyldningsDato()).append("\n");
+                // Append other relevant information about Påfyldning as needed, but avoid calling påfyldning.toString()
             }
         }
 
         stringBuilder.append("Nuværende Påfyldning:\n");
         if (getPåfyldning() != null) {
-            stringBuilder.append("\t").append(getPåfyldning().toString()).append("\n");
+
+            stringBuilder.append("\t").append("Påfyldning Dato: ").append(getPåfyldning().getPaafyldningsDato()).append("\n");
+            // Append other relevant information about Påfyldning as needed, but avoid calling påfyldning.toString()
         } else {
             stringBuilder.append("\tNo current påfyldning\n");
         }
 
         return stringBuilder.toString();
     }
+
 }
