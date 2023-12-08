@@ -60,4 +60,9 @@ public class Storage {
         this.lager.remove(lager);
     }
 
+    public void reset() {
+        destillationer.clear();
+        fadListe.clear();
+        lager.clear();
+    }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import storage.Storage;
@@ -11,16 +12,17 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//TODO: SNAK MED ESBEN OM HVORFOR DE FEJLER NÅR DEN KØRER ALLE TESTS SAMTIDIGT
-//FORDI DET ER KUN ER 1 CONTROLLER SOM HAR DET SAMME STORAGE
-
 class ControllerTest {
     private Controller controller;
     private Storage storage;
     @BeforeEach
     void setUp() {
        controller = Controller.getController();
+    }
 
+    @AfterEach
+    void tearDown() {
+        controller.getStorage().reset();
     }
 
     @Test
