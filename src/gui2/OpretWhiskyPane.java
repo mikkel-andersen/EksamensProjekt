@@ -7,6 +7,7 @@ import model.Whisky;
 import javafx.scene.control.ListView;
 
 import javax.swing.plaf.basic.BasicButtonUI;
+import java.net.http.WebSocket;
 import java.util.List;
 
 public class OpretWhiskyPane extends GridPane {
@@ -23,18 +24,18 @@ public class OpretWhiskyPane extends GridPane {
         this.add(btnOpretWhisky, 1, 0);
     }
 
-    public void updateControls() {
+    /*public void updateControls() {
         lstWhisky.getItems().clear();
-        List<Whisky> whiskies = controller.getWhiskies();
+       List<Whisky> whiskies = controller.getWhiskies();
         if (whiskies != null) {
             lstWhisky.getItems().addAll(whiskies);
         }
-    }
-
+    }*/
+/*
     public void openCreateWhiskyDialog() {
-        OpretWhiskyDialog createWhiskyDialog = new CreateWhiskyDialog("Opret Whisky");
+        OpretWhiskyDialog createWhiskyDialog = new createWhiskyDialog("Opret Whisky");
         createWhiskyDialog.showAndWait();
         this.updateControls();
     }
-
+*/
 }
