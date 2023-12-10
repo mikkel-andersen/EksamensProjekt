@@ -1,5 +1,6 @@
 package gui2;
 
+import controller.Controller;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import model.Whisky;
@@ -14,28 +15,24 @@ public class OpretWhiskyPane extends GridPane {
 
     private ListView <Whisky> lstWhisky = new ListView<>();
     private Button btnOpretWhisky = new Button("Opret Whisky");
+    private Controller controller;
 
     public OpretWhiskyPane() {
+        controller = Controller.getController();
         this.setGridLinesVisible(false);
         this.setHgap(20);
         this.setVgap(10);
 
         this.add(lstWhisky, 0, 0);
         this.add(btnOpretWhisky, 1, 0);
+
+        btnOpretWhisky.setOnAction(event -> openCreateWhiskyDialog());
     }
 
-    /*public void updateControls() {
-        lstWhisky.getItems().clear();
-       List<Whisky> whiskies = controller.getWhiskies();
-        if (whiskies != null) {
-            lstWhisky.getItems().addAll(whiskies);
-        }
-    }*/
-/*
     public void openCreateWhiskyDialog() {
-        OpretWhiskyDialog createWhiskyDialog = new createWhiskyDialog("Opret Whisky");
+        OpretWhiskyDialogPane createWhiskyDialog = new OpretWhiskyDialogPane(controller);
         createWhiskyDialog.showAndWait();
-        this.updateControls();
+        lstWhisky.getItems().setAll(controller.getWhiskyList());
     }
-*/
+
 }

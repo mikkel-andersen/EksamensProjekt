@@ -44,16 +44,19 @@ public class StartVindue extends Application {
 
         Tab tabOpretFad = new Tab("Opret fad og destillationer");
         Tab tabOpretLager = new Tab("Opret & Se Lager");
+        Tab tabOpretWhisky = new Tab("Opret Whisky");
 
         OpretOgVisLagerPane opretOgVisLagerPane = new OpretOgVisLagerPane();
         tabOpretLager.setContent(opretOgVisLagerPane);
         OpretFadOgDestillationerPane opretFadOgDestillationerPane = new OpretFadOgDestillationerPane(opretOgVisLagerPane);
         tabOpretFad.setContent(opretFadOgDestillationerPane);
+        OpretWhiskyPane opretWhiskyPane = new OpretWhiskyPane();
+        tabOpretWhisky.setContent(opretWhiskyPane);
 
 
 
 
-        tabPane.getTabs().addAll(tabOpretFad, tabOpretLager);
+        tabPane.getTabs().addAll(tabOpretFad, tabOpretLager, tabOpretWhisky);
 
         tabOpretFad.setOnSelectionChanged(event -> opretFadOgDestillationerPane.updateControls());
 
