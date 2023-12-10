@@ -21,5 +21,11 @@ public class OpretWhiskyDialogPane extends Dialog<Whisky> {
         grid.setVgap(10);
 
         grid.add(new Label("Navn"), 0, 0);
+        grid.add(new Label("Aftapningsdato"), 0, 1);
+        grid.add(new Label("Antal Liter"), 0, 2);
+
+        this.getDialogPane().setContent(grid);
+
+
     }
 }
