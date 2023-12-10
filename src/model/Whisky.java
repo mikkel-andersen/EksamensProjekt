@@ -4,16 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Whisky {
+    private String navn;
     private LocalDate aftapningsDato;
     private ArrayList<Påfyldning> påfyldninger = new ArrayList<>();
     private double antalLiter;
     private double alkoholProcent;
     private String type;
+    private boolean fortyndet = false;
 
 
 
 
-    public Whisky(LocalDate aftapningsDato, double antalLiter, double alkoholProcent) {
+    public Whisky(String navn, LocalDate aftapningsDato, double antalLiter, double alkoholProcent) {
+        this.navn = navn;
         this.aftapningsDato = aftapningsDato;
         this.antalLiter = antalLiter;
         this.alkoholProcent = alkoholProcent;
@@ -101,6 +104,7 @@ public class Whisky {
     public void fortyndWhisky(double ønsketAlkoholProcent) {
         antalLiter += ((alkoholProcent * antalLiter) - (ønsketAlkoholProcent * antalLiter)) / (ønsketAlkoholProcent);
         alkoholProcent = ønsketAlkoholProcent;
+        this.fortyndet = true;
     }
 
     public String whiskyLabel() {

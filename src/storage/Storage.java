@@ -3,6 +3,7 @@ package storage;
 import model.Destillation;
 import model.Fad;
 import model.Lager;
+import model.Whisky;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +12,13 @@ public class Storage {
     private List<Destillation> destillationer;
     private List<Fad> fadListe;
     private List<Lager> lager;
+    private List<Whisky> whisky;
 
     public Storage() {
         destillationer = new ArrayList<>();
         fadListe = new ArrayList<>();
         lager = new ArrayList<>();
+        whisky = new ArrayList<>();
     }
 
     public List<Destillation> getDestillationer() {
@@ -55,6 +58,17 @@ public class Storage {
             this.lager.add(lager);
         }
     }
+
+    public void addWhisky(Whisky whisky) {
+        if (!this.whisky.contains(whisky)) {
+            this.whisky.add(whisky);
+        }
+    }
+
+    public List<Whisky> getWhisky() {
+        return new ArrayList<>(whisky);
+    }
+    
 
     public void removeLager(Lager lager) {
         this.lager.remove(lager);

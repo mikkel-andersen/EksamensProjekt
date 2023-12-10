@@ -97,14 +97,14 @@ public class Påfyldning {
     }
 
 
-    public Whisky aftapFad(LocalDate dato) {
+    public Whisky aftapFad(String navn, LocalDate dato) {
         double alkoholProcent = udregnAlkoholProcent();
         double antalLiter = getLiter();
         LocalDate aftapningsDato = dato;
 
         if (erWhisky(aftapningsDato)) {
             Whisky whisky;
-            whisky = new Whisky(aftapningsDato, antalLiter, alkoholProcent);
+            whisky = new Whisky(navn, aftapningsDato, antalLiter, alkoholProcent);
             setWhisky(whisky);
             whisky.addPåfyldning(this);
             fad.setPåfyldning(null);

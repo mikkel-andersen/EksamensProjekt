@@ -55,7 +55,7 @@ class PåfyldningTest {
         // Arrange
         Påfyldning påfyldning = new Påfyldning(LocalDate.of(2019,12,1), fad, lager, mængder);
         // Act
-        Whisky whisky = påfyldning.aftapFad(LocalDate.of(2023,12,1));
+        Whisky whisky = påfyldning.aftapFad("Whisky Test", LocalDate.of(2023,12,1));
         // Assert
         assertEquals(140, whisky.getAntalLiter());
         assertEquals(53.5, whisky.getAlkoholProcent());
@@ -72,7 +72,7 @@ class PåfyldningTest {
         Påfyldning påfyldning = new Påfyldning(LocalDate.of(2022,12,1), fad, lager, mængder);
         // Act
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            Whisky whisky = påfyldning.aftapFad(LocalDate.of(2023,12,1));
+            Whisky whisky = påfyldning.aftapFad("Whisky Test", LocalDate.of(2023,12,1));
         });
         // Assert
         assertEquals("Fadet er ikke gammelt nok til at blive til whisky", exception.getMessage());

@@ -45,6 +45,12 @@ public class Controller {
         return påfyldning;
     }
 
+    public Whisky opretWhisky(Påfyldning påfyldning, String navn, LocalDate aftapningsDato) {
+        Whisky whisky = påfyldning.aftapFad(navn, aftapningsDato);
+        storage.addWhisky(whisky);
+        return whisky;
+    }
+
     public Mængde opretMængde(double mængde, Destillation destillation) {
         Mængde m = new Mængde(mængde, destillation);
         return m;

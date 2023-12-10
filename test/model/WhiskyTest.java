@@ -37,7 +37,7 @@ class WhiskyTest {
 
         påfyldning = new Påfyldning(LocalDate.of(2019,1,5), fad, lager, mængder);
         påfyldning2 = new Påfyldning(LocalDate.of(2019,1,6), fad2, lager, mængder2);
-        whisky = påfyldning.aftapFad(LocalDate.of(2023,1,5));
+        whisky = påfyldning.aftapFad("Whisky Test", LocalDate.of(2023,1,5));
 
 
 
