@@ -124,4 +124,8 @@ public class Whisky {
         }
         return label;
     }
+
+    public String getNavn() {
+        return navn;
+    }
 }

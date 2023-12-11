@@ -32,7 +32,7 @@ public class OpretWhiskyPane extends GridPane {
     public void openCreateWhiskyDialog() {
         OpretWhiskyDialogPane createWhiskyDialog = new OpretWhiskyDialogPane(controller);
         createWhiskyDialog.showAndWait();
-        lstWhisky.getItems().setAll(controller.getWhiskyList());
+        lstWhisky.getItems().setAll(controller.getWhisky());
     }
 
 }

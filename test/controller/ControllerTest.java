@@ -90,8 +90,26 @@ class ControllerTest {
         assertEquals(1, påfyldning.getDestillationer().size()); // Tjekker om destillationen er blevet tilføjet til påfyldningen
         assertEquals(100, påfyldning.getLiter()); // Tjekker om literen er blevet tilføjet til påfyldningen
         assertEquals(mængde, påfyldning.getMængder().get(0)); // Tjekker om påfyldningen er blevet tilføjet til mængden
+    }
 
-
+    @Test
+    void aftapFad() {
+        // Arrange
+        Controller controller = Controller.getController();
+        Medarbejder medarbejder = new Medarbejder("Hans");
+        Destillation destillation = controller.opretDestillation(LocalDate.of(2019, 11,22),
+                LocalDate.of(2023,11,29), "NP77", "Byg", 100, 57.50, medarbejder);
+        Mængde mængde = new Mængde(100, destillation);
+        Påfyldning påfyldning = controller.opretPåfyldning(LocalDate.of(2019,11,29), new Fad("Spanien", "Bourbon", 100,1), new Lager(1, 100, "Lager1"), new ArrayList<>(List.of(mængde)));
+        // Act
+        Whisky whisky = controller.opretWhisky(påfyldning, "Whisky Test", LocalDate.of(2023,12,1));
+        // Assert
+        assertEquals(100, whisky.getAntalLiter()); // Tjekker om literen er blevet tilføjet til whiskyen
+        assertEquals(57.49999999999999, whisky.getAlkoholProcent(), 0.01); // Tjekker om alkoholprocenten er blevet tilføjet til whiskyen
+        assertEquals("Whisky Test", whisky.getNavn()); // Tjekker om navnet er blevet tilføjet til whiskyen
+        assertEquals(LocalDate.of(2023,12,1), whisky.getAftapningsDato()); // Tjekker om aftapningsdatoen er blevet tilføjet til whiskyen
+        assertEquals(1, Controller.getController().getWhisky().size()); // Tjekker om whiskyen er blevet tilføjet til listen af whisky
+        assertEquals(whisky, Controller.getController().getWhisky().get(0)); // Tjekker om whiskyen er blevet tilføjet til listen af whisky
     }
 
     @Test
