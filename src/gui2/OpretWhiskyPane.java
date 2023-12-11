@@ -41,6 +41,8 @@ public class OpretWhiskyPane extends GridPane {
         this.add(txtWhisky, 1, 1);
         this.add(btnOpretWhisky, 4, 1);
 
+        txtWhisky.setEditable(false);
+
 
 
         lstWhisky.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
