@@ -128,4 +128,8 @@ public class Whisky {
     public String getNavn() {
         return navn;
     }
+
+    public String toString() {
+        return navn;
+    }
 }
