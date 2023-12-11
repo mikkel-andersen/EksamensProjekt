@@ -49,8 +49,10 @@ class WhiskyTest {
         whisky.addPåfyldning(påfyldning2);
         // Assert
         assertEquals(2, whisky.getPåfyldninger().size());
+        assertEquals(påfyldning2, whisky.getPåfyldninger().get(1));
         assertEquals(140, whisky.getAntalLiter());
         assertEquals("Single Malt", whisky.getType());
+        assertEquals(56.35, whisky.getAlkoholProcent(), 0.01);
 
     }
 

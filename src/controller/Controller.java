@@ -82,6 +82,19 @@ public class Controller {
         return storage.getWhisky();
     }
 
+    public void createSomeObjects() {
+        Medarbejder medarbejder = new Medarbejder("Hans");
+        Destillation destillation = opretDestillation(LocalDate.of(2023, 11,22),
+                LocalDate.of(2023,11,29), "NP77", "Byg", 100, 57.50, medarbejder);
+        Destillation destillation1 = opretDestillation(LocalDate.of(2023, 11,22),
+                LocalDate.of(2023,11,29), "NP77", "Rug", 100, 57.50, medarbejder);
+        Lager lager = opretLager("Lager",100);
+        Fad fad = opretFad("Spanien", "Bourbon", 200);
+        ArrayList<Mængde> mængder = new ArrayList<>(List.of(new Mængde(100, destillation), new Mængde(100, destillation1)));
+        Påfyldning påfyldning = opretPåfyldning(LocalDate.of(2019,11,29), fad, lager, mængder);
+        Whisky whisky = opretWhisky(påfyldning, "Whisky Test", LocalDate.of(2023,12,1));
+    }
+
     public void reset() {
         storage.reset();
     }

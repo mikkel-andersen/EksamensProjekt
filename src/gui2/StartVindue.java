@@ -64,6 +64,8 @@ public class StartVindue extends Application {
 
 
 
+
+
     }
 
 

@@ -1,5 +1,6 @@
 package gui2;
 
+import controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ public class LoginWindow extends Application {
 
     private Stage stage;
     private BorderPane loginPane;
+    private Controller controller = Controller.getController();
 
     @Override
     public void start(Stage primaryStage) {
@@ -67,6 +69,7 @@ public class LoginWindow extends Application {
         StartVindue startVindue = new StartVindue();
         startVindue.init();
         startVindue.start(stage);
+        controller.createSomeObjects();
     }
 
     public static void main(String[] args) {
