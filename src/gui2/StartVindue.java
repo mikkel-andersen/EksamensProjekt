@@ -42,6 +42,8 @@ public class StartVindue extends Application {
     private void initTabPane(TabPane tabPane){
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
+
+
         Tab tabOpretFad = new Tab("Opret fad og destillationer");
         Tab tabOpretLager = new Tab("Opret & Se Lager");
         Tab tabOpretWhisky = new Tab("Opret Whisky");
