@@ -1,9 +1,6 @@
 package storage;
 
-import model.Destillation;
-import model.Fad;
-import model.Lager;
-import model.Whisky;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +10,14 @@ public class Storage {
     private List<Fad> fadListe;
     private List<Lager> lager;
     private List<Whisky> whisky;
+    private List<Påfyldning> påfyldninger;
 
     public Storage() {
         destillationer = new ArrayList<>();
         fadListe = new ArrayList<>();
         lager = new ArrayList<>();
         whisky = new ArrayList<>();
+        påfyldninger = new ArrayList<>();
     }
 
     public List<Destillation> getDestillationer() {
@@ -63,6 +62,16 @@ public class Storage {
         if (!this.whisky.contains(whisky)) {
             this.whisky.add(whisky);
         }
+    }
+
+    public void addPåfyldning(Påfyldning påfyldning) {
+        if (!påfyldninger.contains(påfyldning)) {
+            påfyldninger.add(påfyldning);
+        }
+    }
+
+    public List<Påfyldning> getPåfyldninger() {
+        return new ArrayList<>(påfyldninger);
     }
 
     public List<Whisky> getWhisky() {

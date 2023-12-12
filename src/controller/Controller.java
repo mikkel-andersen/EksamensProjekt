@@ -42,7 +42,12 @@ public class Controller {
 
     public Påfyldning opretPåfyldning(LocalDate paafyldningsDato, Fad fad, Lager lager, ArrayList<Mængde> mængder) {
         Påfyldning påfyldning = new Påfyldning(paafyldningsDato, fad, lager, mængder);
+        storage.addPåfyldning(påfyldning);
         return påfyldning;
+    }
+
+    public List<Påfyldning> getPåfyldninger() {
+        return storage.getPåfyldninger();
     }
 
     public Whisky opretWhisky(Påfyldning påfyldning, String navn, LocalDate aftapningsDato) {

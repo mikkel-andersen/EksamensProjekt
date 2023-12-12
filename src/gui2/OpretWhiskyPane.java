@@ -49,7 +49,7 @@ public class OpretWhiskyPane extends GridPane {
             }
         });
 
-
+        lstWhisky.getItems().setAll(controller.getWhisky());
         btnOpretWhisky.setOnAction(event -> openCreateWhiskyDialog());
     }
 

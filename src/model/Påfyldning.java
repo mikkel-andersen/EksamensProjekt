@@ -5,9 +5,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-// se de fade der er på et bestemt lager
-// se de fade der er på et bestemt lager, der er ældre end 3 år
-// se alle fade
 
 public class Påfyldning {
 
@@ -24,11 +21,7 @@ public class Påfyldning {
             throw new IllegalArgumentException("Der kan ikke fyldes så meget på fadet");
         } else if (fad.getLager() != null && fad.getLager() != lager) {
             throw new IllegalArgumentException("Fadet er allerede på et andet lager");
-
         } else if (fad.getLager() == lager && fad.getLager() != null) {
-            System.out.println("fad.getLager(): " + fad.getLager());
-            System.out.println("lager: " + lager);
-
             throw new IllegalArgumentException("Fadet er allerede på dette lager");
         }
         this.paafyldningsDato = paafyldningsDato;
@@ -121,6 +114,11 @@ public class Påfyldning {
 
     public void addMængde(Mængde mængde) {
         mængder.add(mængde);
+    }
+
+    @Override
+    public String toString() {
+        return "Påfyldning fra " + paafyldningsDato + " med " + getLiter() + " liter";
     }
 
 

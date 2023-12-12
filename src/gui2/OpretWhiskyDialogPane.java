@@ -30,7 +30,7 @@ public class OpretWhiskyDialogPane extends Dialog<Whisky> {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        påfyldningComboBox.getItems().setAll(controller.getFadListe().get(0).getPåfyldning());
+        påfyldningComboBox.getItems().setAll(controller.getPåfyldninger());
 
         grid.add(new Label("Navn"), 0, 0);
         grid.add(new Label("Aftapningsdato"), 0, 1);
